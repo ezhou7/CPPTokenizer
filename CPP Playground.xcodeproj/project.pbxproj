@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		451755E91EAEAFCA0029F5E1 /* tokenizer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 451755E71EAEAFCA0029F5E1 /* tokenizer.cpp */; };
+		451755EC1EAEBD8B0029F5E1 /* string_const.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 451755EA1EAEBD8B0029F5E1 /* string_const.cpp */; };
 		455E0D031EADB10E00E382ED /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 455E0D021EADB10E00E382ED /* main.cpp */; };
 /* End PBXBuildFile section */
 
@@ -23,6 +25,10 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		451755E71EAEAFCA0029F5E1 /* tokenizer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = tokenizer.cpp; sourceTree = "<group>"; };
+		451755E81EAEAFCA0029F5E1 /* tokenizer.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = tokenizer.hpp; sourceTree = "<group>"; };
+		451755EA1EAEBD8B0029F5E1 /* string_const.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = string_const.cpp; sourceTree = "<group>"; };
+		451755EB1EAEBD8B0029F5E1 /* string_const.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = string_const.hpp; sourceTree = "<group>"; };
 		455E0CFF1EADB10E00E382ED /* CPP Playground */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "CPP Playground"; sourceTree = BUILT_PRODUCTS_DIR; };
 		455E0D021EADB10E00E382ED /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -58,6 +64,10 @@
 			isa = PBXGroup;
 			children = (
 				455E0D021EADB10E00E382ED /* main.cpp */,
+				451755E71EAEAFCA0029F5E1 /* tokenizer.cpp */,
+				451755E81EAEAFCA0029F5E1 /* tokenizer.hpp */,
+				451755EA1EAEBD8B0029F5E1 /* string_const.cpp */,
+				451755EB1EAEBD8B0029F5E1 /* string_const.hpp */,
 			);
 			path = "CPP Playground";
 			sourceTree = "<group>";
@@ -120,6 +130,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				455E0D031EADB10E00E382ED /* main.cpp in Sources */,
+				451755EC1EAEBD8B0029F5E1 /* string_const.cpp in Sources */,
+				451755E91EAEAFCA0029F5E1 /* tokenizer.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -218,6 +230,7 @@
 		455E0D071EADB10E00E382ED /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -225,6 +238,7 @@
 		455E0D081EADB10E00E382ED /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;
@@ -248,6 +262,7 @@
 				455E0D081EADB10E00E382ED /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
