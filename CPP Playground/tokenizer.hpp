@@ -16,6 +16,7 @@
 #include <memory>
 
 #include "string_const.hpp"
+#include "string_utils.hpp"
 
 using namespace std;
 
