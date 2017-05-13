@@ -11,16 +11,26 @@
 #include <regex>
 #include <memory>
 
+#include "test.hpp"
+#include "tokenizer_test.hpp"
+
 using namespace std;
 
 int main(int argc, const char * argv[]) {
-    // insert code here...
     string s = "Some people are careless.";
-    
+
     unique_ptr<basic_regex<char>> uniq_re(new basic_regex<char>("\\w+"));
     bool match = regex_search(s, *(basic_regex<char> *) uniq_re.get());
     
     cout << ((match) ? "Match" : "No match") << endl;
+    
+    test_all();
+    
+    TokenizerTest tokenizer_test;
+    
+    tokenizer_test.simple_test();
+    tokenizer_test.moderate_test();
+    tokenizer_test.advanced_test();
     
     return 0;
 }

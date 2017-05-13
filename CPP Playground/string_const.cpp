@@ -14,6 +14,7 @@ const string StringConst::NEWLINE = "\n";
 
 const string StringConst::ELLIPSIS = "...";
 const string StringConst::PERIOD = ".";
+const string StringConst::COMMA = ",";
 const string StringConst::COLON = ":";
 const string StringConst::SEMICOLON = ";";
 
