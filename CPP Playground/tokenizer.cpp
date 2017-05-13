@@ -47,6 +47,56 @@ bool Tokenizer::is_ellipsis(const string& s, int pos) {
     s[pos + 2] == CharConst::PERIOD;
 }
 
+vector<string *>* Tokenizer::tokenize(const string& text) {
+    auto tokens = new vector<string *>();
+    
+    int prev = 0;
+    for (int i = 0; i < text.size(); i++) {
+        char c = text[i];
+        
+        if (is_whitespace(c)) {
+            
+            // ignore contiguous chunks of whitespace
+            if (prev - i == 0) {
+                prev = i + 1;
+                continue;
+            }
+            
+            tokens->push_back(new string(text.substr(prev, i - prev)));
+            prev = i + 1;
+        } else if (is_terminal_punc(c)) {
+            
+            // append token before terminal punctuation
+            if (i - 1 > 0 && !is_terminal_punc(text[i - 1])) {
+                tokens->push_back(new string(text.substr(prev, i - prev)));
+                prev = i;
+            }
+            
+            // treat consecutive terminal punctations as one tokens
+            if (i + 1 < text.size() && !is_terminal_punc(text[i + 1])) {
+                tokens->push_back(new string(text.substr(prev, i - prev + 1)));
+                prev = i + 1;
+            }
+        } else if (is_conjunctive(c)) {
+            tokens->push_back(new string(text.substr(prev, i - prev)));
+            tokens->push_back(new string(1, c));
+            
+            prev = i + 1;
+        } else if (is_apostrophe(c)) {
+            int suf_len = eng_apos->is_apostrophe_suffix(text, i + 1);
+            
+            tokens->push_back(new string(text.substr(prev, i - prev)));
+            tokens->push_back(new string(text.substr(i, suf_len + 1)));
+            
+            prev = i + suf_len + 1;
+        }
+    }
+    
+    tokens->push_back(new string(text.substr(prev, text.size() - prev)));
+    
+    return tokens;
+}
+
 vector<string *>* Tokenizer::split_whitespace(const string& sentence) {
     auto token_primitives = new vector<string *>();
     
@@ -112,54 +162,3 @@ vector<string *>* Tokenizer::segmentize(const string& text) {
     
     return sentence_primitives;
 }
-
-vector<string *>* Tokenizer::tokenize(const string& text) {
-    auto tokens = new vector<string *>();
-    
-    int prev = 0;
-    for (int i = 0; i < text.size(); i++) {
-        char c = text[i];
-        
-        if (is_whitespace(c)) {
-            
-            // ignore contiguous chunks of whitespace
-            if (prev - i == 0) {
-                prev = i + 1;
-                continue;
-            }
-            
-            tokens->push_back(new string(text.substr(prev, i - prev)));
-            prev = i + 1;
-        } else if (is_terminal_punc(c)) {
-            
-            // append token before terminal punctuation
-            if (i - 1 > 0 && !is_terminal_punc(text[i - 1])) {
-                tokens->push_back(new string(text.substr(prev, i - prev)));
-                prev = i;
-            }
-            
-            // treat consecutive terminal punctations as one tokens
-            if (i + 1 < text.size() && !is_terminal_punc(text[i + 1])) {
-                tokens->push_back(new string(text.substr(prev, i - prev + 1)));
-                prev = i + 1;
-            }
-        } else if (is_conjunctive(c)) {
-            tokens->push_back(new string(text.substr(prev, i - prev)));
-            tokens->push_back(new string(1, c));
-            
-            prev = i + 1;
-        } else if (is_apostrophe(c)) {
-            int suf_len = eng_apos->is_apostrophe_suffix(text, i + 1);
-            
-            tokens->push_back(new string(text.substr(prev, i - prev)));
-            tokens->push_back(new string(text.substr(i, suf_len + 1)));
-            
-            prev = i + suf_len + 1;
-        }
-    }
-    
-    tokens->push_back(new string(text.substr(prev, text.size() - prev)));
-    
-    return tokens;
-}
-

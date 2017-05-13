@@ -75,33 +75,3 @@ void TokenizerTest::advanced_test() {
     test(Complexity::advanced);
 }
 
-//void TokenizerTest::simple_test() {
-//    cout << "Beginning simple tokenizer test...\n\n";
-//    
-//    string s = "This is a simple tokenization test";
-//    auto tokens = tokenizer->tokenize(s);
-//    
-//    cout << "String for tokenization: " << s << "\n";
-//    
-//    cout << "Tokens:\n";
-//    for (int i = 0; i < tokens->size(); i++) {
-//        auto tk = tokens[0][i];
-//        
-//        cout << *tk << "\n";
-//        delete tk;
-//    }
-//    
-//    tokens->clear();
-//    delete tokens;
-//    
-//    cout << "Simple tokenizer test finished.\n\n";
-//}
-//
-//void TokenizerTest::moderate_test() {
-//    cout << "Beginning moderate tokenizer test...\n\n";
-//    
-//    string s = "This is a moderate tokenization test. Wait, another one??";
-//    auto tokens = tokenizer->tokenize(s);
-//    
-//    
-//}

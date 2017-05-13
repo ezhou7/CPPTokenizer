@@ -45,9 +45,10 @@ public:
     Tokenizer();
     ~Tokenizer();
     
+    vector<string *>* tokenize(const string& text);
+    
     vector<string *>* split_whitespace(const string& sentence);
     vector<string *>* segmentize(const string& text);
-    vector<string *>* tokenize(const string& text);
 };
 
 #endif /* tokenizer_hpp */
