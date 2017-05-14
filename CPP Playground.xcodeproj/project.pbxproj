@@ -10,6 +10,7 @@
 		451755E91EAEAFCA0029F5E1 /* tokenizer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 451755E71EAEAFCA0029F5E1 /* tokenizer.cpp */; };
 		451755EC1EAEBD8B0029F5E1 /* string_const.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 451755EA1EAEBD8B0029F5E1 /* string_const.cpp */; };
 		4534CFA31EB2B27600856179 /* token.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4534CFA11EB2B27600856179 /* token.cpp */; };
+		453667A21EC8DC8300830040 /* trie_test.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 453667A01EC8DC8300830040 /* trie_test.cpp */; };
 		45523E261EC82BD8005F5374 /* trie.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 45523E241EC82BD8005F5374 /* trie.cpp */; };
 		455E0D031EADB10E00E382ED /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 455E0D021EADB10E00E382ED /* main.cpp */; };
 		459045671EC039BF00DB0B13 /* char_const.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 459045651EC039BF00DB0B13 /* char_const.cpp */; };
@@ -43,6 +44,8 @@
 		451755EB1EAEBD8B0029F5E1 /* string_const.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = string_const.hpp; sourceTree = "<group>"; };
 		4534CFA11EB2B27600856179 /* token.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = token.cpp; sourceTree = "<group>"; };
 		4534CFA21EB2B27600856179 /* token.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = token.hpp; sourceTree = "<group>"; };
+		453667A01EC8DC8300830040 /* trie_test.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = trie_test.cpp; sourceTree = "<group>"; };
+		453667A11EC8DC8300830040 /* trie_test.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = trie_test.hpp; sourceTree = "<group>"; };
 		45523E241EC82BD8005F5374 /* trie.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = trie.cpp; sourceTree = "<group>"; };
 		45523E251EC82BD8005F5374 /* trie.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = trie.hpp; sourceTree = "<group>"; };
 		455E0CFF1EADB10E00E382ED /* CPP Playground */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "CPP Playground"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -164,6 +167,8 @@
 			children = (
 				45B4B3951EC7747500A272F8 /* tokenizer_test.cpp */,
 				45B4B3961EC7747500A272F8 /* tokenizer_test.hpp */,
+				453667A01EC8DC8300830040 /* trie_test.cpp */,
+				453667A11EC8DC8300830040 /* trie_test.hpp */,
 			);
 			name = test;
 			sourceTree = "<group>";
@@ -246,6 +251,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				45FBD75F1EAEFF5100EAFFE0 /* strutils.cpp in Sources */,
+				453667A21EC8DC8300830040 /* trie_test.cpp in Sources */,
 				45B4B3971EC7747500A272F8 /* tokenizer_test.cpp in Sources */,
 				45AA8DDA1EC140D8006D0D33 /* dsutils.cpp in Sources */,
 				4534CFA31EB2B27600856179 /* token.cpp in Sources */,

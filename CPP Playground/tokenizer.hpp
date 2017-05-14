@@ -23,6 +23,7 @@
 
 #include "abbreviation.hpp"
 #include "apostrophe.hpp"
+#include "emoticon.hpp"
 
 #include "char_const.hpp"
 
@@ -35,6 +36,7 @@ class Tokenizer {
 private:
     unique_ptr<Abbreviation> abbrev;
     unique_ptr<EnglishApostrophe> eng_apos;
+    unique_ptr<Emoticon> emoticon;
     
     bool is_whitespace(const char& c);
     bool is_terminal(const char& c);
@@ -47,6 +49,7 @@ private:
     
     bool is_abbreviation(const string& s);
     bool is_ellipsis(const string& s, int pos);
+    bool is_emoticon(const string& s);
     
 public:
     Tokenizer();

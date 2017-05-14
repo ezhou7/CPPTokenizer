@@ -11,6 +11,7 @@
 Tokenizer::Tokenizer() {
     abbrev = unique_ptr<Abbreviation>(new Abbreviation);
     eng_apos = unique_ptr<EnglishApostrophe>(new EnglishApostrophe);
+    emoticon = unique_ptr<Emoticon>(new Emoticon);
 }
 
 Tokenizer::~Tokenizer() {
@@ -51,6 +52,11 @@ bool Tokenizer::is_ellipsis(const string& s, int pos) {
            s[pos + 2] == CharConst::PERIOD;
 }
 
+bool Tokenizer::is_emoticon(const string& s) {
+    cout << s << "\n";
+    return emoticon->is_emoticon(s);
+}
+
 vector<string *>* Tokenizer::tokenize(const string& text) {
     auto tokens = new vector<string *>();
     
@@ -63,6 +69,10 @@ vector<string *>* Tokenizer::tokenize(const string& text) {
             if (prev != i)
                 tokens->push_back(new string(text.substr(prev, i - prev)));
             
+            prev = i + 1;
+        } else if (prev < i && is_emoticon(text.substr(prev, i - prev + 1))) {
+            cout << "Emoticon working\n";
+            tokens->push_back(new string(text.substr(prev, i - prev + 1)));
             prev = i + 1;
         } else if (is_terminal(c)) {
             // check if is abbreviation
@@ -119,6 +129,8 @@ vector<string *>* Tokenizer::tokenize(const string& text) {
     
     return tokens;
 }
+
+/* ------------------- Deprecated ------------------- */
 
 vector<string *>* Tokenizer::split_whitespace(const string& sentence) {
     auto token_primitives = new vector<string *>();

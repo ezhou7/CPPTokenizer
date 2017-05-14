@@ -15,6 +15,7 @@
 #include <memory>
 #include <unordered_set>
 
+#include "trie.hpp"
 #include "dictionary.hpp"
 #include "dsutils.hpp"
 
@@ -22,7 +23,7 @@ using namespace std;
 
 class Emoticon {
 private:
-    unique_ptr<unordered_set<string>> s_emoticon;
+    unique_ptr<Trie> t_emoticon;
     
     void init(ifstream& in_stream);
 
@@ -32,6 +33,7 @@ public:
     ~Emoticon();
     
     bool is_emoticon(const string& s);
+    bool is_emoticon(const string& s, int pos);
 };
 
 #endif /* emoticon_hpp */

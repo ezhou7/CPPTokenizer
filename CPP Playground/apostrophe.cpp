@@ -16,18 +16,22 @@ EnglishApostrophe::~EnglishApostrophe() {
     
 }
 
-// check if reached end of word or end of string
-//
-// param s: entire string being tokenized
-// param pos: position of last char in suffix w.r.t. to string "s"
+/*!
+    check if reached end of word or end of string
+
+    \param s entire string being tokenized
+    \param pos position of last char in suffix w.r.t. to string "s"
+ */
 bool EnglishApostrophe::is_suffix(const string& s, int pos) {
     return (pos + 1 >= s.size() || !isalpha(s[pos + 1])) ? true : false;
 }
 
-// check if apostrophe suffix exists
-//
-// param s: entire string being tokenized
-// param pos: position of first char after apostrophe, NOT position of apostrophe itself
+/*!
+    check if apostrophe suffix exists
+
+    \param s entire string being tokenized
+    \param pos position of first char after apostrophe, NOT position of apostrophe itself
+ */
 int EnglishApostrophe::is_apostrophe_suffix(const string& s, int pos) {
     for (int i = 0; i < len; i++) {
         auto suf = APOSTROPHE_SUFFIXES[i];

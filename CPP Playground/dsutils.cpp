@@ -25,3 +25,17 @@ unordered_set<string>* create_strset(ifstream& in_stream) {
     
     return str_set;
 }
+
+Trie* create_trie(ifstream& in_stream) {
+    if (!in_stream.is_open()) {
+        cout << "create_trie(): File is invalid or has been closed already.\n";
+        return nullptr;
+    }
+    
+    auto trie = new Trie(in_stream);
+    
+    if (in_stream.is_open())
+        in_stream.close();
+    
+    return trie;
+}

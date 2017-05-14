@@ -19,10 +19,18 @@ Emoticon::Emoticon(ifstream& in_stream) {
     init(in_stream);
 }
 
+Emoticon::~Emoticon() {
+    
+}
+
 void Emoticon::init(ifstream& in_stream) {
-    s_emoticon = make_unique<unordered_set<string>>(*create_strset(in_stream));
+    t_emoticon = unique_ptr<Trie>(create_trie(in_stream));
 }
 
 bool Emoticon::is_emoticon(const string& s) {
-    return s_emoticon->count(s);
+    return t_emoticon->contains(s);
+}
+
+bool Emoticon::is_emoticon(const string& s, int pos) {
+    return t_emoticon->contains(s, pos);
 }
