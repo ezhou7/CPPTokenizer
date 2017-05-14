@@ -25,6 +25,8 @@
 #include "apostrophe.hpp"
 
 #include "char_const.hpp"
+
+#include "charutils.hpp"
 #include "strutils.hpp"
 
 using namespace std;
@@ -36,14 +38,15 @@ private:
     
     bool is_whitespace(const char& c);
     bool is_terminal(const char& c);
+    
     bool is_conjunctive(const char& c);
     bool is_apostrophe(const char& c);
     
-    bool is_abbreviation(const string& s);
-    bool is_ellipsis(const string& s, int pos);
-    
     bool is_opener(const char& c);
     bool is_encloser(const char& c);
+    
+    bool is_abbreviation(const string& s);
+    bool is_ellipsis(const string& s, int pos);
     
 public:
     Tokenizer();

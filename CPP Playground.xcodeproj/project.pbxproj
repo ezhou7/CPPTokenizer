@@ -10,6 +10,7 @@
 		451755E91EAEAFCA0029F5E1 /* tokenizer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 451755E71EAEAFCA0029F5E1 /* tokenizer.cpp */; };
 		451755EC1EAEBD8B0029F5E1 /* string_const.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 451755EA1EAEBD8B0029F5E1 /* string_const.cpp */; };
 		4534CFA31EB2B27600856179 /* token.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4534CFA11EB2B27600856179 /* token.cpp */; };
+		45523E261EC82BD8005F5374 /* trie.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 45523E241EC82BD8005F5374 /* trie.cpp */; };
 		455E0D031EADB10E00E382ED /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 455E0D021EADB10E00E382ED /* main.cpp */; };
 		459045671EC039BF00DB0B13 /* char_const.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 459045651EC039BF00DB0B13 /* char_const.cpp */; };
 		45AA8DD71EC13DE6006D0D33 /* abbreviation.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 45AA8DD51EC13DE6006D0D33 /* abbreviation.cpp */; };
@@ -18,6 +19,8 @@
 		45B4B3971EC7747500A272F8 /* tokenizer_test.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 45B4B3951EC7747500A272F8 /* tokenizer_test.cpp */; };
 		45B4B39A1EC78F5D00A272F8 /* apostrophe.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 45B4B3981EC78F5D00A272F8 /* apostrophe.cpp */; };
 		45D2089E1EC7EC570070D05F /* test.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 45D2089C1EC7EC570070D05F /* test.cpp */; };
+		45D208A51EC7EDDA0070D05F /* emoticon.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 45D208A31EC7EDDA0070D05F /* emoticon.cpp */; };
+		45D208A81EC7F6000070D05F /* charutils.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 45D208A61EC7F6000070D05F /* charutils.cpp */; };
 		45FBD75F1EAEFF5100EAFFE0 /* strutils.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 45FBD75D1EAEFF5100EAFFE0 /* strutils.cpp */; };
 /* End PBXBuildFile section */
 
@@ -40,6 +43,8 @@
 		451755EB1EAEBD8B0029F5E1 /* string_const.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = string_const.hpp; sourceTree = "<group>"; };
 		4534CFA11EB2B27600856179 /* token.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = token.cpp; sourceTree = "<group>"; };
 		4534CFA21EB2B27600856179 /* token.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = token.hpp; sourceTree = "<group>"; };
+		45523E241EC82BD8005F5374 /* trie.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = trie.cpp; sourceTree = "<group>"; };
+		45523E251EC82BD8005F5374 /* trie.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = trie.hpp; sourceTree = "<group>"; };
 		455E0CFF1EADB10E00E382ED /* CPP Playground */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "CPP Playground"; sourceTree = BUILT_PRODUCTS_DIR; };
 		455E0D021EADB10E00E382ED /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		459045651EC039BF00DB0B13 /* char_const.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = char_const.cpp; sourceTree = "<group>"; };
@@ -56,6 +61,10 @@
 		45B4B3991EC78F5D00A272F8 /* apostrophe.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = apostrophe.hpp; sourceTree = "<group>"; };
 		45D2089C1EC7EC570070D05F /* test.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = test.cpp; sourceTree = "<group>"; };
 		45D2089D1EC7EC570070D05F /* test.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = test.hpp; sourceTree = "<group>"; };
+		45D208A31EC7EDDA0070D05F /* emoticon.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = emoticon.cpp; sourceTree = "<group>"; };
+		45D208A41EC7EDDA0070D05F /* emoticon.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = emoticon.hpp; sourceTree = "<group>"; };
+		45D208A61EC7F6000070D05F /* charutils.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = charutils.cpp; sourceTree = "<group>"; };
+		45D208A71EC7F6000070D05F /* charutils.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = charutils.hpp; sourceTree = "<group>"; };
 		45FBD75D1EAEFF5100EAFFE0 /* strutils.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = strutils.cpp; sourceTree = "<group>"; };
 		45FBD75E1EAEFF5100EAFFE0 /* strutils.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = strutils.hpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -71,6 +80,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		45523E231EC82BC7005F5374 /* structure */ = {
+			isa = PBXGroup;
+			children = (
+				45523E241EC82BD8005F5374 /* trie.cpp */,
+				45523E251EC82BD8005F5374 /* trie.hpp */,
+			);
+			name = structure;
+			sourceTree = "<group>";
+		};
 		455E0CF61EADB10E00E382ED = {
 			isa = PBXGroup;
 			children = (
@@ -93,6 +111,7 @@
 				455E0D021EADB10E00E382ED /* main.cpp */,
 				45D208A11EC7ECA30070D05F /* tokenizer */,
 				45AA8DDE1EC151E7006D0D33 /* dictionary */,
+				45523E231EC82BC7005F5374 /* structure */,
 				45AA8DE01EC15308006D0D33 /* const */,
 				45AA8DDF1EC1520F006D0D33 /* util */,
 				45AA8DE11EC15322006D0D33 /* test */,
@@ -106,10 +125,12 @@
 			children = (
 				45AA8DDB1EC1508B006D0D33 /* dictionary.cpp */,
 				45AA8DDC1EC1508B006D0D33 /* dictionary.hpp */,
-				45AA8DD51EC13DE6006D0D33 /* abbreviation.cpp */,
-				45AA8DD61EC13DE6006D0D33 /* abbreviation.hpp */,
 				45B4B3981EC78F5D00A272F8 /* apostrophe.cpp */,
 				45B4B3991EC78F5D00A272F8 /* apostrophe.hpp */,
+				45AA8DD51EC13DE6006D0D33 /* abbreviation.cpp */,
+				45AA8DD61EC13DE6006D0D33 /* abbreviation.hpp */,
+				45D208A31EC7EDDA0070D05F /* emoticon.cpp */,
+				45D208A41EC7EDDA0070D05F /* emoticon.hpp */,
 			);
 			name = dictionary;
 			sourceTree = "<group>";
@@ -117,6 +138,8 @@
 		45AA8DDF1EC1520F006D0D33 /* util */ = {
 			isa = PBXGroup;
 			children = (
+				45D208A61EC7F6000070D05F /* charutils.cpp */,
+				45D208A71EC7F6000070D05F /* charutils.hpp */,
 				45FBD75D1EAEFF5100EAFFE0 /* strutils.cpp */,
 				45FBD75E1EAEFF5100EAFFE0 /* strutils.hpp */,
 				45AA8DD81EC140D8006D0D33 /* dsutils.cpp */,
@@ -229,7 +252,10 @@
 				45AA8DDD1EC1508B006D0D33 /* dictionary.cpp in Sources */,
 				45D2089E1EC7EC570070D05F /* test.cpp in Sources */,
 				455E0D031EADB10E00E382ED /* main.cpp in Sources */,
+				45D208A51EC7EDDA0070D05F /* emoticon.cpp in Sources */,
+				45523E261EC82BD8005F5374 /* trie.cpp in Sources */,
 				451755EC1EAEBD8B0029F5E1 /* string_const.cpp in Sources */,
+				45D208A81EC7F6000070D05F /* charutils.cpp in Sources */,
 				451755E91EAEAFCA0029F5E1 /* tokenizer.cpp in Sources */,
 				45B4B39A1EC78F5D00A272F8 /* apostrophe.cpp in Sources */,
 				459045671EC039BF00DB0B13 /* char_const.cpp in Sources */,

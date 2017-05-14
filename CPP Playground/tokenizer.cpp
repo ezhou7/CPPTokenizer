@@ -18,19 +18,27 @@ Tokenizer::~Tokenizer() {
 }
 
 bool Tokenizer::is_whitespace(const char& c) {
-    return c == CharConst::SPACE || c == CharConst::TAB || c == CharConst::NEWLINE;
+    return CharUtils::is_whitespace(c);
 }
 
 bool Tokenizer::is_terminal(const char& c) {
-    return c == CharConst::PERIOD || c == CharConst::EXCLAMATION || c == CharConst::QUESTION;
+    return CharUtils::is_terminal(c);
 }
 
 bool Tokenizer::is_conjunctive(const char& c) {
-    return c == CharConst::COMMA || c == CharConst::COLON || c == CharConst::SEMICOLON;
+    return CharUtils::is_conjunctive(c);
 }
 
 bool Tokenizer::is_apostrophe(const char& c) {
-    return c == CharConst::APOSTROPHE;
+    return CharUtils::is_apostrophe(c);
+}
+
+bool Tokenizer::is_opener(const char& c) {
+    return CharUtils::is_opener(c);
+}
+
+bool Tokenizer::is_encloser(const char& c) {
+    return CharUtils::is_encloser(c);
 }
 
 bool Tokenizer::is_abbreviation(const string& s) {
@@ -41,20 +49,6 @@ bool Tokenizer::is_ellipsis(const string& s, int pos) {
     return s[pos] == CharConst::PERIOD &&
            s[pos + 1] == CharConst::PERIOD &&
            s[pos + 2] == CharConst::PERIOD;
-}
-
-bool Tokenizer::is_opener(const char& c) {
-    return c == CharConst::DOUBLE_QUOTE ||
-           c == CharConst::LEFT_PARENS ||
-           c == CharConst::LEFT_BRACKET ||
-           c == CharConst::LEFT_BRACE;
-}
-
-bool Tokenizer::is_encloser(const char& c) {
-    return c == CharConst::DOUBLE_QUOTE ||
-    c == CharConst::RIGHT_PARENS ||
-    c == CharConst::RIGHT_BRACKET ||
-    c == CharConst::RIGHT_BRACE;
 }
 
 vector<string *>* Tokenizer::tokenize(const string& text) {
