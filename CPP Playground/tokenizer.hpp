@@ -19,6 +19,7 @@
 #include <cctype>
 
 #include <boost/algorithm/string.hpp>
+#include <boost/algorithm/string/case_conv.hpp>
 
 #include "abbreviation.hpp"
 #include "apostrophe.hpp"
@@ -34,12 +35,15 @@ private:
     unique_ptr<EnglishApostrophe> eng_apos;
     
     bool is_whitespace(const char& c);
-    bool is_terminal_punc(const char& c);
+    bool is_terminal(const char& c);
     bool is_conjunctive(const char& c);
     bool is_apostrophe(const char& c);
     
-    bool is_abbreviation(const string& s, int pos);
+    bool is_abbreviation(const string& s);
     bool is_ellipsis(const string& s, int pos);
+    
+    bool is_opener(const char& c);
+    bool is_encloser(const char& c);
     
 public:
     Tokenizer();
@@ -47,8 +51,8 @@ public:
     
     vector<string *>* tokenize(const string& text);
     
-    vector<string *>* split_whitespace(const string& sentence);
-    vector<string *>* segmentize(const string& text);
+    vector<string *>* split_whitespace(const string& sentence) __attribute__ ((deprecated));
+    vector<string *>* segmentize(const string& text) __attribute__((deprecated));
 };
 
 #endif /* tokenizer_hpp */

@@ -36,3 +36,6 @@ const char CharConst::RIGHT_BRACE = '}';
 
 const char CharConst::LESS_THAN = '<';
 const char CharConst::GREATER_THAN = '>';
+
+const char CharConst::DOUBLE_QUOTE = '"';
+const char CharConst::SINGLE_QUOTE = '\'';

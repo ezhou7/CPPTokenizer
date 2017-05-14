@@ -27,11 +27,11 @@ void TokenizerTest::test(Complexity level) {
             break;
         case Complexity::moderate:
             test_type = "moderate";
-            test_str = "This is a moderate tokenization test.  A moderate test???Wait a second...Uhhh, I'm not sure what to do..Maybe I've done goofed.";
+            test_str = "This is a moderate tokenization test.  A moderate test???Wait a second...Uhhh, I'm not sure what to do... Maybe I've done goofed.";
             break;
         case Complexity::advanced:
             test_type = "advanced";
-            test_str = "This is an advanced tokenization test.  This test is too advanced... But is it.I think so,but...maybe not, because I'm not sure why.";
+            test_str = "This is an advanced tokenization test.  Is it too advanced?I think so,but...maybe not, because I'm not sure why.  \"But here are some days of the week:Mon., Tues., Wednesday, Thurs.\", said Ms. O'Donnell.";
             break;
         
         default:

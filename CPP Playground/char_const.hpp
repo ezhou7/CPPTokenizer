@@ -47,6 +47,9 @@ public:
     
     static const char LESS_THAN;
     static const char GREATER_THAN;
+    
+    static const char DOUBLE_QUOTE;
+    static const char SINGLE_QUOTE;
 };
 
 #endif /* char_const_hpp */

@@ -12,7 +12,7 @@ void test_all() {
     token_test();
     abbreviation_test();
     
-    split_whitespace_test();
+//    split_whitespace_test();
     split_sentences_test();
 }
 
