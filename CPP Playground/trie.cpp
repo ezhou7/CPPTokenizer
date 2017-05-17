@@ -104,19 +104,20 @@ bool Trie::contains(const string& s) {
     return contains(s, 0);
 }
 
-bool Trie::contains(const string& s, int pos) {
+int Trie::contains(const string& s, int pos) {
     auto node = root.get();
     
-    for (int i = pos; i < s.size(); i++) {
+    int i;
+    for (i = pos; i < s.size(); i++) {
         auto next = node->get_children()[s[i]];
         
         if (next != nullptr)
             node = next;
         else
-            return false;
+            return 0;
     }
     
-    return node->is_terminal();
+    return (node->is_terminal()) ? i - pos : 0;
 }
 
 void Trie::remove(TrieNode *node) {

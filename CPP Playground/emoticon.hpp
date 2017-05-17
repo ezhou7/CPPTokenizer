@@ -33,7 +33,7 @@ public:
     ~Emoticon();
     
     bool is_emoticon(const string& s);
-    bool is_emoticon(const string& s, int pos);
+    int is_emoticon(const string& s, int pos);
 };
 
 #endif /* emoticon_hpp */

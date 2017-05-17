@@ -22,7 +22,7 @@ void TrieTest::basic_test_1() {
 }
 
 void TrieTest::basic_test_2() {
-    string s = "string";
+    string s = ">:)";
     trie->insert(s);
     
     if (trie->contains(s) && !trie->contains("string together"))

@@ -53,8 +53,11 @@ bool Tokenizer::is_ellipsis(const string& s, int pos) {
 }
 
 bool Tokenizer::is_emoticon(const string& s) {
-    cout << s << "\n";
     return emoticon->is_emoticon(s);
+}
+
+int Tokenizer::is_emoticon(const string& s, const int pos) {
+    return emoticon->is_emoticon(s, pos);
 }
 
 vector<string *>* Tokenizer::tokenize(const string& text) {
@@ -70,10 +73,13 @@ vector<string *>* Tokenizer::tokenize(const string& text) {
                 tokens->push_back(new string(text.substr(prev, i - prev)));
             
             prev = i + 1;
-        } else if (prev < i && is_emoticon(text.substr(prev, i - prev + 1))) {
-            cout << "Emoticon working\n";
-            tokens->push_back(new string(text.substr(prev, i - prev + 1)));
-            prev = i + 1;
+        } else if (int k = is_emoticon(text, i)) {
+            if (prev != i)
+                tokens->push_back(new string(text.substr(prev, i - prev)));
+            
+            tokens->push_back(new string(text.substr(i, k)));
+            
+            i = prev = i + k;
         } else if (is_terminal(c)) {
             // check if is abbreviation
             if (is_abbreviation(boost::to_lower_copy(text.substr(prev, i - prev)))) {

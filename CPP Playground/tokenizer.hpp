@@ -49,7 +49,9 @@ private:
     
     bool is_abbreviation(const string& s);
     bool is_ellipsis(const string& s, int pos);
+    
     bool is_emoticon(const string& s);
+    int is_emoticon(const string& s, const int pos);
     
 public:
     Tokenizer();

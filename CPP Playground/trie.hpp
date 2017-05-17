@@ -59,7 +59,7 @@ public:
     void insert(const string& s);
     
     bool contains(const string& s);
-    bool contains(const string& s, int pos);
+    int contains(const string& s, int pos);
     
     void remove(TrieNode *node);
 };

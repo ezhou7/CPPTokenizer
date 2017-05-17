@@ -31,6 +31,6 @@ bool Emoticon::is_emoticon(const string& s) {
     return t_emoticon->contains(s);
 }
 
-bool Emoticon::is_emoticon(const string& s, int pos) {
+int Emoticon::is_emoticon(const string& s, int pos) {
     return t_emoticon->contains(s, pos);
 }
