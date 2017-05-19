@@ -8,6 +8,8 @@
 
 #include "string_const.hpp"
 
+const string StringConst::EMPTY = "";
+
 const string StringConst::SPACE = " ";
 const string StringConst::TAB = "\t";
 const string StringConst::NEWLINE = "\n";

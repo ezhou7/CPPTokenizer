@@ -60,6 +60,10 @@ int Tokenizer::is_emoticon(const string& s, const int pos) {
     return emoticon->is_emoticon(s, pos);
 }
 
+string* Tokenizer::substring(const string& s, int start, int end) {
+    return StringUtils::substring(s, start, end);
+}
+
 vector<string *>* Tokenizer::tokenize(const string& text) {
     auto tokens = new vector<string *>();
     
@@ -70,40 +74,45 @@ vector<string *>* Tokenizer::tokenize(const string& text) {
         if (is_whitespace(c)) {
             // ignore contiguous chunks of whitespace
             if (prev != i)
-                tokens->push_back(new string(text.substr(prev, i - prev)));
+                tokens->push_back(substring(text, prev, i));
             
             prev = i + 1;
         } else if (int k = is_emoticon(text, i)) {
+            cout << "Emoticon working\n";
+            // push previous token
             if (prev != i)
-                tokens->push_back(new string(text.substr(prev, i - prev)));
+                tokens->push_back(substring(text, prev, i));
             
+            // treat emoticon as token
             tokens->push_back(new string(text.substr(i, k)));
             
             i = prev = i + k;
         } else if (is_terminal(c)) {
             // check if is abbreviation
             if (is_abbreviation(boost::to_lower_copy(text.substr(prev, i - prev)))) {
-                tokens->push_back(new string(text.substr(prev, i - prev + 1)));
+                tokens->push_back(substring(text, prev, i + 1));
                 prev = i + 1;
+                
                 continue;
             }
             
             // append token before terminal punctuation
             if (i - 1 > 0 && !is_terminal(text[i - 1])) {
-                tokens->push_back(new string(text.substr(prev, i - prev)));
+                tokens->push_back(substring(text, prev, i));
                 prev = i;
             }
             
             // treat consecutive terminal punctations as one tokens
             if (i + 1 < text.size() && !is_terminal(text[i + 1])) {
-                tokens->push_back(new string(text.substr(prev, i - prev + 1)));
+                tokens->push_back(substring(text, prev, i + 1));
                 prev = i + 1;
             }
         } else if (is_conjunctive(c)) {
             // don't push empty strings
             if (prev != i)
-                tokens->push_back(new string(text.substr(prev, i - prev)));
+                tokens->push_back(substring(text, prev, i));
             
+            // push conjunctive punctuation as token
             tokens->push_back(new string(1, c));
             
             prev = i + 1;
@@ -112,18 +121,27 @@ vector<string *>* Tokenizer::tokenize(const string& text) {
             
             // if there exists an apostrophe suffix, then suf_len > 0
             if (suf_len) {
-                if (prev != i)
-                    tokens->push_back(new string(text.substr(prev, i - prev)));
+                if (text[i + 1] == 't' && text[i - 1] == 'n') {
+                    if (prev - 1 != i)
+                        tokens->push_back(substring(text, prev, i - 1));
+                    
+                    tokens->push_back(new string(text.substr(i - 1, 3)));
+                    
+                    prev = i + 2;
+                } else {
+                    if (prev != i)
+                        tokens->push_back(substring(text, prev, i));
                 
-                tokens->push_back(new string(text.substr(i, suf_len + 1)));
+                    tokens->push_back(new string(text.substr(i, suf_len + 1)));
             
-                prev = i + suf_len + 1;
+                    prev = i + suf_len + 1;
+                }
             } else {
                 continue;
             }
         } else if (is_opener(c) || is_encloser(c)) {
             if (prev != i)
-                tokens->push_back(new string(text.substr(prev, i - prev)));
+                tokens->push_back(substring(text, prev, i));
             
             tokens->push_back(new string(1, c));
             
@@ -131,7 +149,7 @@ vector<string *>* Tokenizer::tokenize(const string& text) {
         }
     }
     
-    tokens->push_back(new string(text.substr(prev, text.size() - prev)));
+    tokens->push_back(substring(text, prev, (int) text.size()));
     
     return tokens;
 }

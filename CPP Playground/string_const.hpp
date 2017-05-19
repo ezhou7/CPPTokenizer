@@ -17,6 +17,9 @@ using namespace std;
 
 class StringConst {
 public:
+    // empty
+    static const string EMPTY;
+    
     // whitespace
     static const string SPACE;
     static const string TAB;

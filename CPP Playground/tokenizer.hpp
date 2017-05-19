@@ -26,6 +26,7 @@
 #include "emoticon.hpp"
 
 #include "char_const.hpp"
+#include "string_const.hpp"
 
 #include "charutils.hpp"
 #include "strutils.hpp"
@@ -52,6 +53,11 @@ private:
     
     bool is_emoticon(const string& s);
     int is_emoticon(const string& s, const int pos);
+    
+    string* substring(const string& s, int start, int end);
+    void add_token(vector<string *> *tokens, const string& s, int start, int end);
+    
+    void tokenize_whitespace(vector<string *> *tokens, const string& s, int& prev, int& curr);
     
 public:
     Tokenizer();

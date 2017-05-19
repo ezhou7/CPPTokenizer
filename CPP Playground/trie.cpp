@@ -109,6 +109,7 @@ int Trie::contains(const string& s, int pos) {
     
     int i;
     for (i = pos; i < s.size(); i++) {
+        cout << s[i] << "\n";
         auto next = node->get_children()[s[i]];
         
         if (next != nullptr)
