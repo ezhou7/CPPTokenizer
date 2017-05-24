@@ -12,14 +12,20 @@
 #include <stdio.h>
 
 #include <string>
+#include <vector>
+
+#include <boost/algorithm/string/join.hpp>
 
 using namespace std;
 
 class StringUtils {
 public:
     static bool is_equal(const string& s1, const string& s2);
+    
     static string* substring(const string& s, int start, int end);
     static string* substring(const string& s, const pair<int, int>& markers);
+    
+    static string* join(const vector<string *> *str_vec, const string& delim);
 };
 
 #endif /* strutils_hpp */

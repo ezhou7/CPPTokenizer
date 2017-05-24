@@ -109,13 +109,16 @@ int Trie::contains(const string& s, int pos) {
     
     int i;
     for (i = pos; i < s.size(); i++) {
-        cout << s[i] << "\n";
+        if (node->is_terminal())
+            return i - pos;
+        
         auto next = node->get_children()[s[i]];
         
-        if (next != nullptr)
+        if (next != nullptr) {
             node = next;
-        else
+        } else {
             return 0;
+        }
     }
     
     return (node->is_terminal()) ? i - pos : 0;

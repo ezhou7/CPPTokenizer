@@ -19,3 +19,12 @@ string* StringUtils::substring(const string& s, int start, int end) {
 string* StringUtils::substring(const string& s, const pair<int, int>& markers) {
     return substring(s, markers.first, markers.second);
 }
+
+string* StringUtils::join(const vector<string *> *str_vec, const string& delim) {
+    string *s = boost::algorithm::join(*str_vec, delim);
+    auto joined = new string(*s);
+    
+    delete s;
+    
+    return joined;
+}

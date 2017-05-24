@@ -7,11 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4504ED721ED0FD4D00A0EDC2 /* compound_test.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4504ED701ED0FD4D00A0EDC2 /* compound_test.cpp */; };
 		451755E91EAEAFCA0029F5E1 /* tokenizer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 451755E71EAEAFCA0029F5E1 /* tokenizer.cpp */; };
 		451755EC1EAEBD8B0029F5E1 /* string_const.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 451755EA1EAEBD8B0029F5E1 /* string_const.cpp */; };
 		4534CFA31EB2B27600856179 /* token.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4534CFA11EB2B27600856179 /* token.cpp */; };
 		453667A21EC8DC8300830040 /* trie_test.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 453667A01EC8DC8300830040 /* trie_test.cpp */; };
 		45523E261EC82BD8005F5374 /* trie.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 45523E241EC82BD8005F5374 /* trie.cpp */; };
+		45591A7B1ED0ABD100E3049C /* compound.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 45591A791ED0ABD100E3049C /* compound.cpp */; };
+		45591A7E1ED0AE9100E3049C /* ioutils.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 45591A7C1ED0AE9100E3049C /* ioutils.cpp */; };
 		455E0D031EADB10E00E382ED /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 455E0D021EADB10E00E382ED /* main.cpp */; };
 		459045671EC039BF00DB0B13 /* char_const.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 459045651EC039BF00DB0B13 /* char_const.cpp */; };
 		45AA8DD71EC13DE6006D0D33 /* abbreviation.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 45AA8DD51EC13DE6006D0D33 /* abbreviation.cpp */; };
@@ -38,6 +41,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		4504ED701ED0FD4D00A0EDC2 /* compound_test.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = compound_test.cpp; sourceTree = "<group>"; };
+		4504ED711ED0FD4D00A0EDC2 /* compound_test.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = compound_test.hpp; sourceTree = "<group>"; };
 		451755E71EAEAFCA0029F5E1 /* tokenizer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = tokenizer.cpp; sourceTree = "<group>"; };
 		451755E81EAEAFCA0029F5E1 /* tokenizer.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = tokenizer.hpp; sourceTree = "<group>"; };
 		451755EA1EAEBD8B0029F5E1 /* string_const.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = string_const.cpp; sourceTree = "<group>"; };
@@ -48,6 +53,10 @@
 		453667A11EC8DC8300830040 /* trie_test.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = trie_test.hpp; sourceTree = "<group>"; };
 		45523E241EC82BD8005F5374 /* trie.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = trie.cpp; sourceTree = "<group>"; };
 		45523E251EC82BD8005F5374 /* trie.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = trie.hpp; sourceTree = "<group>"; };
+		45591A791ED0ABD100E3049C /* compound.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = compound.cpp; sourceTree = "<group>"; };
+		45591A7A1ED0ABD100E3049C /* compound.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = compound.hpp; sourceTree = "<group>"; };
+		45591A7C1ED0AE9100E3049C /* ioutils.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ioutils.cpp; sourceTree = "<group>"; };
+		45591A7D1ED0AE9100E3049C /* ioutils.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = ioutils.hpp; sourceTree = "<group>"; };
 		455E0CFF1EADB10E00E382ED /* CPP Playground */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "CPP Playground"; sourceTree = BUILT_PRODUCTS_DIR; };
 		455E0D021EADB10E00E382ED /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		459045651EC039BF00DB0B13 /* char_const.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = char_const.cpp; sourceTree = "<group>"; };
@@ -134,6 +143,8 @@
 				45AA8DD61EC13DE6006D0D33 /* abbreviation.hpp */,
 				45D208A31EC7EDDA0070D05F /* emoticon.cpp */,
 				45D208A41EC7EDDA0070D05F /* emoticon.hpp */,
+				45591A791ED0ABD100E3049C /* compound.cpp */,
+				45591A7A1ED0ABD100E3049C /* compound.hpp */,
 			);
 			name = dictionary;
 			sourceTree = "<group>";
@@ -147,6 +158,8 @@
 				45FBD75E1EAEFF5100EAFFE0 /* strutils.hpp */,
 				45AA8DD81EC140D8006D0D33 /* dsutils.cpp */,
 				45AA8DD91EC140D8006D0D33 /* dsutils.hpp */,
+				45591A7C1ED0AE9100E3049C /* ioutils.cpp */,
+				45591A7D1ED0AE9100E3049C /* ioutils.hpp */,
 			);
 			name = util;
 			sourceTree = "<group>";
@@ -169,6 +182,8 @@
 				45B4B3961EC7747500A272F8 /* tokenizer_test.hpp */,
 				453667A01EC8DC8300830040 /* trie_test.cpp */,
 				453667A11EC8DC8300830040 /* trie_test.hpp */,
+				4504ED701ED0FD4D00A0EDC2 /* compound_test.cpp */,
+				4504ED711ED0FD4D00A0EDC2 /* compound_test.hpp */,
 			);
 			name = test;
 			sourceTree = "<group>";
@@ -255,13 +270,16 @@
 				45B4B3971EC7747500A272F8 /* tokenizer_test.cpp in Sources */,
 				45AA8DDA1EC140D8006D0D33 /* dsutils.cpp in Sources */,
 				4534CFA31EB2B27600856179 /* token.cpp in Sources */,
+				45591A7E1ED0AE9100E3049C /* ioutils.cpp in Sources */,
 				45AA8DDD1EC1508B006D0D33 /* dictionary.cpp in Sources */,
+				4504ED721ED0FD4D00A0EDC2 /* compound_test.cpp in Sources */,
 				45D2089E1EC7EC570070D05F /* test.cpp in Sources */,
 				455E0D031EADB10E00E382ED /* main.cpp in Sources */,
 				45D208A51EC7EDDA0070D05F /* emoticon.cpp in Sources */,
 				45523E261EC82BD8005F5374 /* trie.cpp in Sources */,
 				451755EC1EAEBD8B0029F5E1 /* string_const.cpp in Sources */,
 				45D208A81EC7F6000070D05F /* charutils.cpp in Sources */,
+				45591A7B1ED0ABD100E3049C /* compound.cpp in Sources */,
 				451755E91EAEAFCA0029F5E1 /* tokenizer.cpp in Sources */,
 				45B4B39A1EC78F5D00A272F8 /* apostrophe.cpp in Sources */,
 				459045671EC039BF00DB0B13 /* char_const.cpp in Sources */,

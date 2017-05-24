@@ -19,6 +19,13 @@ enum class Complexity {
     advanced
 };
 
+enum class Specialized {
+    abbreviation,
+    emoticon,
+    hyphen,
+    currency
+};
+
 class TokenizerTest {
 private:
     Tokenizer *tokenizer;
