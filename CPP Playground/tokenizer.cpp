@@ -60,12 +60,12 @@ int Tokenizer::is_emoticon(const string& s, const int pos) {
     return emoticon->is_emoticon(s, pos);
 }
 
-string* Tokenizer::substring(const string& s, int start, int end) {
+str_t Tokenizer::substring(const string& s, int start, int end) {
     return StringUtils::substring(s, start, end);
 }
 
-vector<string *>* Tokenizer::tokenize(const string& text) {
-    auto tokens = new vector<string *>();
+vector<str_t>* Tokenizer::tokenize(const string& text) {
+    auto tokens = new vector<str_t>();
     
     int prev = 0;
     for (int i = 0; i < text.size(); i++) {
@@ -158,8 +158,8 @@ vector<string *>* Tokenizer::tokenize(const string& text) {
 
 /* ------------------- Deprecated ------------------- */
 
-vector<string *>* Tokenizer::split_whitespace(const string& sentence) {
-    auto token_primitives = new vector<string *>();
+vector<str_t>* Tokenizer::split_whitespace(const string& sentence) {
+    auto token_primitives = new vector<str_t>();
     
     int prev = 0;
     for (int i = 0; i < sentence.size(); i++) {
@@ -183,8 +183,8 @@ vector<string *>* Tokenizer::split_whitespace(const string& sentence) {
     return token_primitives;
 }
 
-vector<string *>* Tokenizer::segmentize(const string& text) {
-    auto sentence_primitives = new vector<string *>();
+vector<str_t>* Tokenizer::segmentize(const string& text) {
+    auto sentence_primitives = new vector<str_t>();
     
     int prev = 0;
     for (int i = 0; i < text.size(); i++) {

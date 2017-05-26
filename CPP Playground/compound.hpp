@@ -15,6 +15,7 @@
 #include <memory>
 #include <unordered_map>
 #include <vector>
+#include <utility>
 
 #include <boost/algorithm/string.hpp>
 #include <boost/algorithm/string/join.hpp>
@@ -28,7 +29,7 @@ using namespace std;
 
 class Compound {
 private:
-    unordered_map<string, unique_ptr<vector<string *>>> *m_compound;
+    uptr_t<hmap_t<string, uptr_t<vector<str_t>>>> m_compound;
     
     void init(ifstream& in_stream);
     
@@ -36,6 +37,8 @@ public:
     Compound();
     Compound(ifstream& in_stream);
     ~Compound();
+    
+    
 };
 
 #endif /* compound_hpp */

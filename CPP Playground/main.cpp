@@ -13,6 +13,7 @@
 
 #include "tokenizer_test.hpp"
 #include "trie_test.hpp"
+#include "compound_test.hpp"
 
 using namespace std;
 
@@ -34,6 +35,9 @@ int main(int argc, const char * argv[]) {
 //    
 //    trie_test.basic_test_1();
 //    trie_test.basic_test_2();
+    
+//    CompoundTest compound_test;
+//    compound_test.test_compound_init();
     
     return 0;
 }

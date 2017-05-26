@@ -12,19 +12,29 @@ bool StringUtils::is_equal(const string& s1, const string& s2) {
     return s1.compare(s2) == 0;
 }
 
-string* StringUtils::substring(const string& s, int start, int end) {
+str_t StringUtils::substring(const string& s, int start, int end) {
     return new string(s.substr(start, end - start));
 }
 
-string* StringUtils::substring(const string& s, const pair<int, int>& markers) {
+str_t StringUtils::substring(const string& s, const pair<int, int>& markers) {
     return substring(s, markers.first, markers.second);
 }
 
-string* StringUtils::join(const vector<string *> *str_vec, const string& delim) {
-    string *s = boost::algorithm::join(*str_vec, delim);
-    auto joined = new string(*s);
+str_t StringUtils::join(const vector<str_t>& str_vec, const string& delim) {
+    int sz = 0;
+    for (int i = 0; i < str_vec.size(); i++) {
+        sz += str_vec[i]->size();
+    }
     
-    delete s;
+    char char_vec[sz];
     
-    return joined;
+    int count = 0;
+    for (int i = 0; i < str_vec.size(); i++) {
+        string s = *str_vec[i];
+        for (int j = 0; j < s.size(); j++) {
+            char_vec[count++] = s[j];
+        }
+    }
+    
+    return new string(char_vec);
 }

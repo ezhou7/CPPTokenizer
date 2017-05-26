@@ -8,13 +8,13 @@
 
 #include "dsutils.hpp"
 
-unordered_set<string>* create_strset(ifstream& in_stream) {
+hset_t<string>* create_strset(ifstream& in_stream) {
     if (!in_stream.is_open()) {
         cout << "File is invalid or has been closed already.\n";
         return nullptr;
     }
     
-    auto str_set = new unordered_set<string>();
+    auto str_set = new hset_t<string>();
     
     string line;
     while (getline(in_stream, line)) {

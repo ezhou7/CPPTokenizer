@@ -21,6 +21,8 @@
 #include <boost/algorithm/string.hpp>
 #include <boost/algorithm/string/case_conv.hpp>
 
+#include "define.h"
+
 #include "abbreviation.hpp"
 #include "apostrophe.hpp"
 #include "emoticon.hpp"
@@ -35,9 +37,9 @@ using namespace std;
 
 class Tokenizer {
 private:
-    unique_ptr<Abbreviation> abbrev;
-    unique_ptr<EnglishApostrophe> eng_apos;
-    unique_ptr<Emoticon> emoticon;
+    uptr_t<Abbreviation> abbrev;
+    uptr_t<EnglishApostrophe> eng_apos;
+    uptr_t<Emoticon> emoticon;
     
     bool is_whitespace(const char& c);
     bool is_terminal(const char& c);
@@ -54,19 +56,17 @@ private:
     bool is_emoticon(const string& s);
     int is_emoticon(const string& s, const int pos);
     
-    string* substring(const string& s, int start, int end);
-    void add_token(vector<string *> *tokens, const string& s, int start, int end);
-    
-    void tokenize_whitespace(vector<string *> *tokens, const string& s, int& prev, int& curr);
+    str_t substring(const string& s, int start, int end);
+    void add_token(vector<str_t> *tokens, const string& s, int start, int end);
     
 public:
     Tokenizer();
     ~Tokenizer();
     
-    vector<string *>* tokenize(const string& text);
+    vector<str_t>* tokenize(const string& text);
     
-    vector<string *>* split_whitespace(const string& sentence) __attribute__ ((deprecated));
-    vector<string *>* segmentize(const string& text) __attribute__((deprecated));
+    vector<str_t>* split_whitespace(const string& sentence) __attribute__ ((deprecated));
+    vector<str_t>* segmentize(const string& text) __attribute__((deprecated));
 };
 
 #endif /* tokenizer_hpp */

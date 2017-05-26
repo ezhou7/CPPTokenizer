@@ -16,6 +16,7 @@
 #include <unordered_set>
 #include <memory>
 
+#include "define.h"
 #include "dictionary.hpp"
 #include "dsutils.hpp"
 
@@ -23,7 +24,7 @@ using namespace std;
 
 class Abbreviation {
 private:
-    unique_ptr<unordered_set<string>> s_period;
+    uptr_t<hset_t<string>> s_period;
     
     void init(ifstream& in_stream);
 

@@ -14,6 +14,7 @@
 #include <string>
 #include <vector>
 
+#include "define.h"
 #include "char_const.hpp"
 
 using namespace std;

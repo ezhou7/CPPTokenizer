@@ -15,6 +15,8 @@
 #include <string>
 #include <memory>
 
+#include "define.h"
+
 using namespace std;
 
 class Token {

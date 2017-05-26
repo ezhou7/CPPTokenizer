@@ -13,6 +13,8 @@
 
 #include <string>
 
+#include "define.h"
+
 using namespace std;
 
 class Dictionary {

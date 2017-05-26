@@ -15,6 +15,7 @@
 #include <memory>
 #include <unordered_set>
 
+#include "define.h"
 #include "trie.hpp"
 #include "dictionary.hpp"
 #include "dsutils.hpp"
@@ -23,7 +24,7 @@ using namespace std;
 
 class Emoticon {
 private:
-    unique_ptr<Trie> t_emoticon;
+    uptr_t<Trie> t_emoticon;
     
     void init(ifstream& in_stream);
 

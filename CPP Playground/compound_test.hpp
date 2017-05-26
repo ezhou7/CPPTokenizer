@@ -11,19 +11,21 @@
 
 #include <stdio.h>
 
+#include <memory>
+
 #include "compound.hpp"
+
+using namespace std;
 
 class CompoundTest {
 private:
-    Compound compound;
-    
-    bool exists(const string& s);
+    unique_ptr<Compound> compound;
     
 public:
     CompoundTest();
     ~CompoundTest();
     
-    void test();
+    void test_compound_init();
 };
 
 #endif /* compound_test_hpp */

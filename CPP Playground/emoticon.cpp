@@ -24,7 +24,7 @@ Emoticon::~Emoticon() {
 }
 
 void Emoticon::init(ifstream& in_stream) {
-    t_emoticon = unique_ptr<Trie>(create_trie(in_stream));
+    t_emoticon = uptr_t<Trie>(create_trie(in_stream));
 }
 
 bool Emoticon::is_emoticon(const string& s) {

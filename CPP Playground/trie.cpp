@@ -38,11 +38,11 @@ bool TrieNode::is_terminal() {
     return terminal;
 }
 
-TrieNode* TrieNode::get_parent() {
+tnode_t TrieNode::get_parent() {
     return parent;
 }
 
-TrieNode** TrieNode::get_children() {
+tnode_t* TrieNode::get_children() {
     return children.get();
 }
 
@@ -59,7 +59,7 @@ void TrieNode::set_terminal(bool t) {
 /* ------------------- Trie Implementation ------------------- */
 
 Trie::Trie() {
-    root = unique_ptr<TrieNode>(new TrieNode());
+    root = uptr_t<TrieNode>(new TrieNode());
 }
 
 Trie::Trie(ifstream& in_stream) {
@@ -71,7 +71,7 @@ Trie::~Trie() {
     remove(get_root());
 }
 
-TrieNode* Trie::get_root() {
+tnode_t Trie::get_root() {
     return root.get();
 }
 
