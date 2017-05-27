@@ -26,6 +26,7 @@
 #include "abbreviation.hpp"
 #include "apostrophe.hpp"
 #include "emoticon.hpp"
+#include "compound.hpp"
 
 #include "char_const.hpp"
 #include "string_const.hpp"
@@ -40,6 +41,7 @@ private:
     uptr_t<Abbreviation> abbrev;
     uptr_t<EnglishApostrophe> eng_apos;
     uptr_t<Emoticon> emoticon;
+    uptr_t<Compound> compound;
     
     bool is_whitespace(const char& c);
     bool is_terminal(const char& c);
@@ -55,6 +57,8 @@ private:
     
     bool is_emoticon(const string& s);
     int is_emoticon(const string& s, const int pos);
+    
+    bool is_compound(const string& s);
     
     str_t substring(const string& s, int start, int end);
     void add_token(vector<str_t> *tokens, const string& s, int start, int end);

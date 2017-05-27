@@ -18,6 +18,26 @@
 using namespace std;
 
 int main(int argc, const char * argv[]) {
+//    if (argc < 2) {
+//        cout << "No arugments presented.\n";
+//        return 0;
+//    }
+//    
+//    // TODO: complete ArgumentParser
+//    
+//    char c = argv[1][1];
+//    
+//    switch (c) {
+//        case 'h':
+//            cout << "Help section:\n";
+//            break;
+//            
+//        default:
+//            cout << "Arguments not recognized.\n";
+//            cout << "Run with argument \"-h\" for help.\n";
+//            break;
+//    }
+    
 //    string s = "Some people are careless.";
 //
 //    unique_ptr<basic_regex<char>> uniq_re(new basic_regex<char>("\\w+"));

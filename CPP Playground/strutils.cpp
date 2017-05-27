@@ -26,7 +26,7 @@ str_t StringUtils::join(const vector<str_t>& str_vec, const string& delim) {
         sz += str_vec[i]->size();
     }
     
-    char char_vec[sz];
+    char char_vec[sz + 1];
     
     int count = 0;
     for (int i = 0; i < str_vec.size(); i++) {
@@ -35,6 +35,8 @@ str_t StringUtils::join(const vector<str_t>& str_vec, const string& delim) {
             char_vec[count++] = s[j];
         }
     }
+    
+    char_vec[count] = '\0';
     
     return new string(char_vec);
 }

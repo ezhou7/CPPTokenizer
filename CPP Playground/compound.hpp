@@ -38,7 +38,8 @@ public:
     Compound(ifstream& in_stream);
     ~Compound();
     
-    
+    bool is_compound(const string& s);
+    vector<str_t>* get_tokens(const string& s);
 };
 
 #endif /* compound_hpp */

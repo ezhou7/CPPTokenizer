@@ -20,13 +20,13 @@ Compound::Compound(ifstream& in_stream) {
 }
 
 Compound::~Compound() {
-//    auto m_obj = *m_compound;
-//    
-//    for (auto const& entry : m_obj) {
-//        for (int i = 0; i < entry.second->size(); i++) {
-//            delete (*entry.second)[i];
-//        }
-//    }
+    for (auto const& entry : *m_compound.get()) {
+        auto tokens = entry.second.get()[0];
+        
+        for (int i = 0; i < tokens.size(); i++) {
+            delete tokens[i];
+        }
+    }
 }
 
 void Compound::init(ifstream& in_stream) {
@@ -43,25 +43,21 @@ void Compound::init(ifstream& in_stream) {
             tokens->push_back(new string(fields[i]));
         }
         
-        string *s = StringUtils::join(*tokens, StringConst::EMPTY);
-        cout << *s << "\n";
+        str_t s = StringUtils::join(*tokens, StringConst::EMPTY);
         (*m_compound)[*s] = make_unique<vector<str_t>>(*tokens);
         
         delete s;
-        
-        printf("%p\n", (*m_compound)["youll"].get());
-        
-        if ((*m_compound)["youll"])
-        cout << *(*m_compound)["youll"]->operator[](3) << "\n";
-        
-        for (int i = 0; i < tokens->size(); i++) {
-            delete tokens[0][i];
-        }
-        
-        delete tokens;
     }
     
     in_stream.close();
+}
+
+bool Compound::is_compound(const string& s) {
+    return m_compound->count(s);
+}
+
+vector<str_t>* Compound::get_tokens(const string& s) {
+    return m_compound.get()[0][s].get();
 }
 
 

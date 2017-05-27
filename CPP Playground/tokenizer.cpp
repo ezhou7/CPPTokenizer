@@ -9,9 +9,10 @@
 #include "tokenizer.hpp"
 
 Tokenizer::Tokenizer() {
-    abbrev = unique_ptr<Abbreviation>(new Abbreviation);
-    eng_apos = unique_ptr<EnglishApostrophe>(new EnglishApostrophe);
-    emoticon = unique_ptr<Emoticon>(new Emoticon);
+    abbrev = uptr_t<Abbreviation>(new Abbreviation);
+    eng_apos = uptr_t<EnglishApostrophe>(new EnglishApostrophe);
+    emoticon = uptr_t<Emoticon>(new Emoticon);
+    compound = uptr_t<Compound>(new Compound);
 }
 
 Tokenizer::~Tokenizer() {
@@ -60,6 +61,10 @@ int Tokenizer::is_emoticon(const string& s, const int pos) {
     return emoticon->is_emoticon(s, pos);
 }
 
+bool Tokenizer::is_compound(const string& s) {
+    return compound->is_compound(s);
+}
+
 str_t Tokenizer::substring(const string& s, int start, int end) {
     return StringUtils::substring(s, start, end);
 }
@@ -73,8 +78,20 @@ vector<str_t>* Tokenizer::tokenize(const string& text) {
         
         if (is_whitespace(c)) {
             // ignore contiguous chunks of whitespace
-            if (prev != i)
-                tokens->push_back(substring(text, prev, i));
+            if (prev != i) {
+                auto prev_token = substring(text, prev, i);
+                
+                if (is_compound(*prev_token)) {
+                    auto split_tokens = compound->get_tokens(*prev_token);
+                    for (int i = 0; i < split_tokens->size(); i++) {
+                        tokens->push_back((*split_tokens)[i]);
+                    }
+                    
+                    delete split_tokens;
+                } else {
+                    tokens->push_back(prev_token);
+                }
+            }
             
             prev = i + 1;
         } else if (int k = is_emoticon(text, i)) {

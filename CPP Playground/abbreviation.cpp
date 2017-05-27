@@ -24,7 +24,7 @@ Abbreviation::~Abbreviation() {
 }
 
 void Abbreviation::init(ifstream& in_stream) {
-    s_period = make_unique<unordered_set<string>>(*create_strset(in_stream));
+    s_period = make_unique<hset_t<string>>(*create_strset(in_stream));
 }
 
 bool Abbreviation::is_abbreviation(const string& lower) {
