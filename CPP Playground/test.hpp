@@ -22,14 +22,14 @@
 
 using namespace std;
 
-void test_all();
+void test_all() __attribute__ ((deprecated));
 
 // object construction tests
-void token_test();
-void abbreviation_test();
+void token_test() __attribute__ ((deprecated));
+void abbreviation_test() __attribute__ ((deprecated));
 
 // tokenization tests
-void split_whitespace_test();
-void split_sentences_test();
+void split_whitespace_test() __attribute__ ((deprecated));
+void split_sentences_test() __attribute__ ((deprecated));
 
 #endif /* test_hpp */
