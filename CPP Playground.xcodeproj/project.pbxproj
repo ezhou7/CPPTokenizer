@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4500F1151EDBF20C0010A394 /* currency.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4500F1131EDBF20C0010A394 /* currency.cpp */; };
 		4504ED721ED0FD4D00A0EDC2 /* compound_test.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4504ED701ED0FD4D00A0EDC2 /* compound_test.cpp */; };
 		451755E91EAEAFCA0029F5E1 /* tokenizer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 451755E71EAEAFCA0029F5E1 /* tokenizer.cpp */; };
 		451755EC1EAEBD8B0029F5E1 /* string_const.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 451755EA1EAEBD8B0029F5E1 /* string_const.cpp */; };
@@ -41,6 +42,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		4500F1131EDBF20C0010A394 /* currency.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = currency.cpp; sourceTree = "<group>"; };
+		4500F1141EDBF20C0010A394 /* currency.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = currency.hpp; sourceTree = "<group>"; };
 		4504ED701ED0FD4D00A0EDC2 /* compound_test.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = compound_test.cpp; sourceTree = "<group>"; };
 		4504ED711ED0FD4D00A0EDC2 /* compound_test.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = compound_test.hpp; sourceTree = "<group>"; };
 		451755E71EAEAFCA0029F5E1 /* tokenizer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = tokenizer.cpp; sourceTree = "<group>"; };
@@ -155,6 +158,8 @@
 				45D208A41EC7EDDA0070D05F /* emoticon.hpp */,
 				45591A791ED0ABD100E3049C /* compound.cpp */,
 				45591A7A1ED0ABD100E3049C /* compound.hpp */,
+				4500F1131EDBF20C0010A394 /* currency.cpp */,
+				4500F1141EDBF20C0010A394 /* currency.hpp */,
 			);
 			name = dictionary;
 			sourceTree = "<group>";
@@ -275,6 +280,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4500F1151EDBF20C0010A394 /* currency.cpp in Sources */,
 				45FBD75F1EAEFF5100EAFFE0 /* strutils.cpp in Sources */,
 				453667A21EC8DC8300830040 /* trie_test.cpp in Sources */,
 				45B4B3971EC7747500A272F8 /* tokenizer_test.cpp in Sources */,

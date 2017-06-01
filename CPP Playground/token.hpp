@@ -21,12 +21,12 @@ using namespace std;
 
 class Token {
 private:
-    unique_ptr<string> word;
+    up_str_t word;
     int start = 0;
     int end = 0;
 
 public:
-    Token(const string& s="");
+    Token(const string& s="", int start=0, int end=0);
     ~Token();
     
     void setWord(const string& s);

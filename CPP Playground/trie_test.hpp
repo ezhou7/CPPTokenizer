@@ -21,8 +21,8 @@ public:
     TrieTest();
     ~TrieTest();
     
-    void basic_test_1();
-    void basic_test_2();
+    void initializationTest();
+    void insertsStringProperlyTest();
 };
 
 #endif /* trie_test_hpp */

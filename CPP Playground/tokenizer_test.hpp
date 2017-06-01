@@ -40,6 +40,8 @@ public:
     void simple_test();
     void moderate_test();
     void advanced_test();
+    
+    void compound_test();
 };
 
 #endif /* tokenizer_test_hpp */

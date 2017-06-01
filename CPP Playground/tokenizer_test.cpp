@@ -75,3 +75,9 @@ void TokenizerTest::advanced_test() {
     test(Complexity::advanced);
 }
 
+void TokenizerTest::compound_test() {
+    string test_type = "compound";
+    string test_str = "Compounds shouldnt be a problem.shouldnt>:)";
+    test(test_type, test_str);
+}
+

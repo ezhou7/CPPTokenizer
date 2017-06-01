@@ -56,8 +56,30 @@ bool Compound::is_compound(const string& s) {
     return m_compound->count(s);
 }
 
-vector<str_t>* Compound::get_tokens(const string& s) {
+vector<str_t>* Compound::get_words(const string& s) {
     return m_compound.get()[0][s].get();
+}
+
+up_tvec_t Compound::tokenize(const string& s, int spos, int epos) {
+    auto tokens = up_tvec_t(new vector<up_token_t>());
+    token_t token;
+    
+    if (is_compound(s)) {
+        auto split_words = get_words(s);
+        
+        int start = spos;
+        for (int i = 0; i < split_words->size(); i++) {
+            auto word = *(*split_words)[i];
+            token = new Token(word, start, start + (int) word.size());
+            
+            tokens->push_back(up_token_t(token));
+        }
+    } else {
+        token = new Token(s, spos, epos);
+        tokens->push_back(up_token_t(token));
+    }
+    
+    return tokens;
 }
 
 

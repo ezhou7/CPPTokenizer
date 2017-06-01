@@ -16,12 +16,12 @@ TrieTest::~TrieTest() {
     
 }
 
-void TrieTest::basic_test_1() {
+void TrieTest::initializationTest() {
     if (trie->get_root() != nullptr)
         cout << "First basic test passed.\n";
 }
 
-void TrieTest::basic_test_2() {
+void TrieTest::insertsStringProperlyTest() {
     string s = ">:)";
     trie->insert(s);
     

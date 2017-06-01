@@ -20,6 +20,9 @@
 #include <boost/algorithm/string.hpp>
 #include <boost/algorithm/string/join.hpp>
 
+#include "define.h"
+
+#include "token.hpp"
 #include "dictionary.hpp"
 
 #include "string_const.hpp"
@@ -39,7 +42,9 @@ public:
     ~Compound();
     
     bool is_compound(const string& s);
-    vector<str_t>* get_tokens(const string& s);
+    vector<str_t>* get_words(const string& s);
+    
+    up_tvec_t tokenize(const string& s, int spos, int epos);
 };
 
 #endif /* compound_hpp */

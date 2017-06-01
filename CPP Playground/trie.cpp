@@ -124,7 +124,7 @@ int Trie::contains(const string& s, int pos) {
     return (node->is_terminal()) ? i - pos : 0;
 }
 
-void Trie::remove(TrieNode *node) {
+void Trie::remove(tnode_t node) {
     if (node == nullptr)
         return;
     

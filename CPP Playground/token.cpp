@@ -8,8 +8,10 @@
 
 #include "token.hpp"
 
-Token::Token(const string& s) {
+Token::Token(const string& s, int start, int end) {
     setWord(s);
+    setStart(start);
+    setEnd(end);
 }
 
 Token::~Token() {
@@ -17,7 +19,7 @@ Token::~Token() {
 }
 
 void Token::setWord(const string& s) {
-    word = unique_ptr<string>(new string(s));
+    word = up_str_t(new string(s));
 }
 
 void Token::setStart(int start) {
@@ -28,7 +30,7 @@ void Token::setEnd(int end) {
     this->end = end;
 }
 
-const string* Token::getWord() {
-    return (const string *) word.get();
+const str_t Token::getWord() {
+    return (const str_t) word.get();
 }
 

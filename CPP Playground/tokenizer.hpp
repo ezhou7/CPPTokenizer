@@ -23,6 +23,7 @@
 
 #include "define.h"
 
+#include "token.hpp"
 #include "abbreviation.hpp"
 #include "apostrophe.hpp"
 #include "emoticon.hpp"
@@ -69,6 +70,7 @@ public:
     
     vector<str_t>* tokenize(const string& text);
     
+    uptr_t<vector<up_token_t>> compound_experimental(const string& s) __attribute__ ((deprecated));
     vector<str_t>* split_whitespace(const string& sentence) __attribute__ ((deprecated));
     vector<str_t>* segmentize(const string& text) __attribute__((deprecated));
 };

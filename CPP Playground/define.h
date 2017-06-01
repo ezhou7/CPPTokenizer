@@ -16,7 +16,10 @@
 
 #define str_t string *
 #define tnode_t TrieNode *
+#define token_t Token *
 
-#define token_t unique_ptr<Token>
+#define up_str_t unique_ptr<string>
+#define up_token_t unique_ptr<Token>
+#define up_tvec_t unique_ptr<vector<unique_ptr<Token>>>
 
 #endif /* define_h */
