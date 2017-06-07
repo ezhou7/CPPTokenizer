@@ -69,8 +69,14 @@ str_t Tokenizer::substring(const string& s, int start, int end) {
     return StringUtils::substring(s, start, end);
 }
 
-vector<str_t>* Tokenizer::tokenize(const string& text) {
-    auto tokens = new vector<str_t>();
+void Tokenizer::add_tokens(up_tvec_t& tokens, up_tvec_t& extension) {
+    tokens->insert(tokens->end(),
+                   make_move_iterator(extension->begin()),
+                   make_move_iterator(extension->end()));
+}
+
+up_tvec_t Tokenizer::tokenize(const string& text) {
+    auto tokens = up_tvec_t(new vector<up_token_t>());
     
     int prev = 0, text_len = (int) text.size();
     for (int i = 0; i < text_len; i++) {
@@ -81,6 +87,7 @@ vector<str_t>* Tokenizer::tokenize(const string& text) {
             if (prev != i) {
                 auto prev_word = text.substr(prev, i - prev);
                 auto c_tokens = compound->tokenize(prev_word, prev, i);
+                add_tokens(tokens, c_tokens);
             }
             
             prev = i + 1;
@@ -89,10 +96,12 @@ vector<str_t>* Tokenizer::tokenize(const string& text) {
             if (prev != i) {
                 auto prev_word = text.substr(prev, i - prev);
                 auto c_tokens = compound->tokenize(prev_word, prev, i);
+                add_tokens(tokens, c_tokens);
             }
             
             // treat emoticon as token
-            tokens->push_back(new string(text.substr(i, k)));
+            auto emote_str = text.substr(i, k);
+            tokens->push_back(up_token_t(new Token(emote_str)));
             
             // need prev = i in next loop instance to trigger prev == i, so i = prev - 1 to combat increment (i++)
             prev = i + k;
@@ -102,7 +111,8 @@ vector<str_t>* Tokenizer::tokenize(const string& text) {
             if (is_abbreviation(boost::to_lower_copy(text.substr(prev, i - prev)))) {
                 auto prev_word = text.substr(prev, i - prev + 1);
                 auto c_tokens = compound->tokenize(prev_word, prev, i + 1);
-//                tokens->push_back(substring(text, prev, i + 1));
+                
+                add_tokens(tokens, c_tokens);
                 prev = i + 1;
                 
                 continue;
@@ -112,7 +122,8 @@ vector<str_t>* Tokenizer::tokenize(const string& text) {
             if (i - 1 > 0 && !is_terminal(text[i - 1])) {
                 auto prev_word = text.substr(prev, i - prev);
                 auto c_tokens = compound->tokenize(prev_word, prev, i);
-//                tokens->push_back(substring(text, prev, i));
+                
+                add_tokens(tokens, c_tokens);
                 prev = i;
             }
             
@@ -120,7 +131,8 @@ vector<str_t>* Tokenizer::tokenize(const string& text) {
             if (i + 1 < text.size() && !is_terminal(text[i + 1])) {
                 auto prev_word = text.substr(prev, i - prev + 1);
                 auto c_tokens = compound->tokenize(prev_word, prev, i);
-//                tokens->push_back(substring(text, prev, i + 1));
+                
+                add_tokens(tokens, c_tokens);
                 prev = i + 1;
             }
         } else if (is_conjunctive(c)) {
@@ -128,50 +140,56 @@ vector<str_t>* Tokenizer::tokenize(const string& text) {
             if (prev != i) {
                 auto prev_word = text.substr(prev, i - prev);
                 auto c_tokens = compound->tokenize(prev_word, prev, i);
-                
-//                tokens->push_back(substring(text, prev, i));
+                add_tokens(tokens, c_tokens);
             }
             
             // push conjunctive punctuation as token
-            tokens->push_back(new string(1, c));
+            tokens->push_back(up_token_t(new Token(string(1, c))));
             
             prev = i + 1;
         } else if (is_apostrophe(c)) {
             int suf_len = eng_apos->is_apostrophe_suffix(text, i + 1);
             
-            // if there exists an apostrophe suffix, then suf_len > 0
+            // TODO: definitely is optimizable
+            // if there exists an apostrophe suffix, then suf_len > 0; otherwise not apostrophe suffix
             if (suf_len) {
+                // if suffix is "n't"
                 if (text[i + 1] == 't' && text[i - 1] == 'n') {
+                    // add word before suffix "n't"
                     if (prev - 1 != i) {
-                        tokens->push_back(substring(text, prev, i - 1));
+                        auto prev_word = text.substr(prev, i - prev - 1);
+                        auto c_tokens = compound->tokenize(prev_word, prev, i - 1);
+                        add_tokens(tokens, c_tokens);
                     }
                     
-                    tokens->push_back(new string(text.substr(i - 1, 3)));
+                    // add suffix itself
+                    auto suffix = text.substr(i - 1, 3);
+                    tokens->push_back(up_token_t(new Token(suffix)));
                     
                     prev = i + 2;
                 } else {
+                    // add word before suffix
                     if (prev != i) {
                         auto prev_word = text.substr(prev, i - prev);
                         auto c_tokens = compound->tokenize(prev_word, prev, i);
-//                        tokens->push_back(substring(text, prev, i));
+                        add_tokens(tokens, c_tokens);
                     }
-                
-                    tokens->push_back(new string(text.substr(i, suf_len + 1)));
+                    
+                    // add suffix
+                    auto suffix = text.substr(i, suf_len + 1);
+                    tokens->push_back(up_token_t(new Token(suffix)));
             
                     prev = i + suf_len + 1;
                 }
-            } else {
-                continue;
             }
         } else if (is_opener(c) || is_encloser(c)) {
             if (prev != i) {
                 auto prev_word = text.substr(prev, i - prev);
                 auto c_tokens = compound->tokenize(prev_word, prev, i);
-                
-//                tokens->push_back(substring(text, prev, i));
+                add_tokens(tokens, c_tokens);
             }
             
-            tokens->push_back(new string(1, c));
+            tokens->push_back(up_token_t(new Token(string(1, c))));
             
             prev = i + 1;
         }
@@ -180,7 +198,7 @@ vector<str_t>* Tokenizer::tokenize(const string& text) {
     if (prev != text_len) {
         auto prev_word = text.substr(prev, text_len - prev);
         auto c_tokens = compound->tokenize(prev_word, prev, text_len);
-//        tokens->push_back(substring(text, prev, (int) text.size()));
+        add_tokens(tokens, c_tokens);
     }
     
     return tokens;

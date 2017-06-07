@@ -31,7 +31,7 @@ void TokenizerTest::test(Complexity level) {
             break;
         case Complexity::advanced:
             test_type = "advanced";
-            test_str = "This is an advanced tokenization test.  Is it too advanced?I think so,but...maybe not, because I'm not sure why.  \"But here are some days of the week:Mon., Tues., Wednesday, Thurs.\", said Ms. O'Donnell. >:) ";
+            test_str = "This is an advanced tokenization test.  Is it too advanced?I think so,but...shouldn't be, because I'm not sure why.  \"But here are some days of the week:Mon., Tues., Wednesday, Thurs.\", said Ms. O'Donnell. >:) ";
             break;
         
         default:
@@ -51,14 +51,10 @@ void TokenizerTest::test(const string& test_type, const string& test_str) {
     
     cout << "Tokens:\n";
     for (int i = 0; i < tokens->size(); i++) {
-        auto tk = tokens[0][i];
+        auto str_token = tokens.get()[0][i]->getWord();
         
-        cout << *tk << "\n";
-        delete tk;
+        cout << *str_token << "\n";
     }
-    
-    tokens->clear();
-    delete tokens;
     
     cout << "Ending " << test_type << " tokenizer test.\n\n";
 }

@@ -15,6 +15,7 @@
 #include <string>
 #include <memory>
 #include <vector>
+#include <iterator>
 #include <utility>
 #include <cctype>
 
@@ -62,13 +63,13 @@ private:
     bool is_compound(const string& s);
     
     str_t substring(const string& s, int start, int end);
-    void add_token(vector<str_t> *tokens, const string& s, int start, int end);
+    void add_tokens(up_tvec_t& tokens, up_tvec_t& extension);
     
 public:
     Tokenizer();
     ~Tokenizer();
     
-    vector<str_t>* tokenize(const string& text);
+    up_tvec_t tokenize(const string& text);
     
     uptr_t<vector<up_token_t>> compound_experimental(const string& s) __attribute__ ((deprecated));
     vector<str_t>* split_whitespace(const string& sentence) __attribute__ ((deprecated));
