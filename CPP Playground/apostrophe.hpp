@@ -15,7 +15,8 @@
 #include <vector>
 
 #include "define.h"
-#include "char_const.hpp"
+#include "charconst.hpp"
+#include "charutils.hpp"
 
 using namespace std;
 

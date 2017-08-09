@@ -37,11 +37,15 @@ public:
     TokenizerTest();
     ~TokenizerTest();
     
-    void simple_test();
-    void moderate_test();
-    void advanced_test();
+    void SimpleTest();
+    void ModerateTest();
+    void AdvancedTest();
     
-    void compound_test();
+    void CompoundTest();
+    void CurrencyTest();
+    void TerminalTest();
+    void ApostropheTest();
+    void ParenthesesTest();
 };
 
 #endif /* tokenizer_test_hpp */

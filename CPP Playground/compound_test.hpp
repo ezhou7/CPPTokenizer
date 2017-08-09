@@ -13,13 +13,14 @@
 
 #include <memory>
 
+#include "define.h"
 #include "compound.hpp"
 
 using namespace std;
 
 class CompoundTest {
 private:
-    unique_ptr<Compound> compound;
+    uptr_t<Compound> compound;
     
 public:
     CompoundTest();

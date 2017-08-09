@@ -31,7 +31,7 @@ void TokenizerTest::test(Complexity level) {
             break;
         case Complexity::advanced:
             test_type = "advanced";
-            test_str = "This is an advanced tokenization test.  Is it too advanced?I think so,but...shouldn't be, because I'm not sure why.  \"But here are some days of the week:Mon., Tues., Wednesday, Thurs.\", said Ms. O'Donnell. >:) ";
+            test_str = "This is an advanced tokenization test.  Is it too advanced?I think so,but...shouldn't be, because I'm not sure why.  \"But here are some days of the week:Mon., Tues., Wednesday, Thurs.\", said Ms. O'Donnell. >:) a";
             break;
         
         default:
@@ -59,21 +59,44 @@ void TokenizerTest::test(const string& test_type, const string& test_str) {
     cout << "Ending " << test_type << " tokenizer test.\n\n";
 }
 
-void TokenizerTest::simple_test() {
+void TokenizerTest::SimpleTest() {
     test(Complexity::simple);
 }
 
-void TokenizerTest::moderate_test() {
+void TokenizerTest::ModerateTest() {
     test(Complexity::moderate);
 }
 
-void TokenizerTest::advanced_test() {
+void TokenizerTest::AdvancedTest() {
     test(Complexity::advanced);
 }
 
-void TokenizerTest::compound_test() {
+void TokenizerTest::CompoundTest() {
     string test_type = "compound";
-    string test_str = "Compounds shouldnt be a problem.shouldnt>:)";
+    string test_str = "Compounds shouldnt be a problem.shouldnt>:)Dont do it.";
     test(test_type, test_str);
 }
 
+void TokenizerTest::CurrencyTest() {
+    string test_type = "currency";
+    string test_str = "This is a form of currency:usd. I have $1.";
+    test(test_type, test_str);
+}
+
+void TokenizerTest::TerminalTest() {
+    string test_type = "terminal";
+    string test_str = "This is a test of tokenizing terminals... terminals are periods, exclamation marks, question marks like so \"???!!!\". These mark the end of a clause.";
+    test(test_type, test_str);
+}
+
+void TokenizerTest::ApostropheTest() {
+    string test_type = "apostrophe";
+    string test_str = "This is a test of tokenizing apostrophes: \"You're a great person. I'm so happy to have you on the team.  But you shouldn't tell them about it yet.\"";
+    test(test_type, test_str);
+}
+
+void TokenizerTest::ParenthesesTest() {
+    string test_type = "parentheses";
+    string test_str = "This is a test of tokenizing parentheses (pair of parentheses)(((((set of parentheses))))).";
+    test(test_type, test_str);
+}

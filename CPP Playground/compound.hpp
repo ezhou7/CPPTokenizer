@@ -25,7 +25,7 @@
 #include "token.hpp"
 #include "dictionary.hpp"
 
-#include "string_const.hpp"
+#include "strconst.hpp"
 #include "strutils.hpp"
 
 using namespace std;

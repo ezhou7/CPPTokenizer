@@ -1,13 +1,13 @@
 //
-//  char_const.hpp
+//  charconst.hpp
 //  CPP Playground
 //
 //  Created by Ethan Zhou on 5/7/17.
 //  Copyright © 2017 NA. All rights reserved.
 //
 
-#ifndef char_const_hpp
-#define char_const_hpp
+#ifndef charconst_hpp
+#define charconst_hpp
 
 #include <stdio.h>
 
@@ -52,4 +52,4 @@ public:
     static const char SINGLE_QUOTE;
 };
 
-#endif /* char_const_hpp */
+#endif /* charconst_hpp */

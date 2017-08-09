@@ -37,14 +37,14 @@ void Compound::init(ifstream& in_stream) {
         vector<string> fields;
         boost::split(fields, line, boost::is_any_of(StringConst::SPACE));
         
-        auto tokens = new vector<str_t>();
+        auto str_tokens = new vector<str_t>();
         
         for (int i = 0; i < fields.size(); i++) {
-            tokens->push_back(new string(fields[i]));
+            str_tokens->push_back(new string(fields[i]));
         }
         
-        str_t s = StringUtils::join(*tokens, StringConst::EMPTY);
-        (*m_compound)[*s] = make_unique<vector<str_t>>(*tokens);
+        str_t s = StringUtils::join(*str_tokens, StringConst::EMPTY);
+        (*m_compound)[*s] = make_unique<vector<str_t>>(*str_tokens);
         
         delete s;
     }
@@ -62,21 +62,22 @@ vector<str_t>* Compound::get_words(const string& s) {
 
 up_tvec_t Compound::tokenize(const string& s, int spos, int epos) {
     auto tokens = up_tvec_t(new vector<up_token_t>());
-    token_t token;
     
-    if (is_compound(s)) {
-        auto split_words = get_words(s);
+    string lowered = boost::to_lower_copy(s);
+    if (is_compound(lowered)) {
+        auto split_words = get_words(lowered);
         
         int start = spos;
         for (int i = 0; i < split_words->size(); i++) {
             auto word = *(*split_words)[i];
-            token = new Token(word, start, start + (int) word.size());
+            int end = start + (int) word.size();
+            token_t token = new Token(word, start, end);
             
             tokens->push_back(up_token_t(token));
+            start = end;
         }
     } else {
-        token = new Token(s, spos, epos);
-        tokens->push_back(up_token_t(token));
+        tokens->push_back(up_token_t(new Token(s, spos, epos)));
     }
     
     return tokens;

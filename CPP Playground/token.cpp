@@ -34,3 +34,10 @@ const str_t Token::getWord() {
     return (const str_t) word.get();
 }
 
+int Token::getStart() {
+    return start;
+}
+
+int Token::getEnd() {
+    return end;
+}

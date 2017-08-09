@@ -46,11 +46,15 @@ int main(int argc, const char * argv[]) {
 //    cout << ((match) ? "Match" : "No match") << endl;
     
     TokenizerTest tokenizer_test;
-//    tokenizer_test.compound_test();
+//    tokenizer_test.TerminalTest();
+//    tokenizer_test.ApostropheTest();
+//    tokenizer_test.ParenthesesTest();
+//    tokenizer_test.CompoundTest();
+//    tokenizer_test.CurrencyTest();
     
-//    tokenizer_test.simple_test();
-//    tokenizer_test.moderate_test();
-    tokenizer_test.advanced_test();
+    tokenizer_test.SimpleTest();
+    tokenizer_test.ModerateTest();
+    tokenizer_test.AdvancedTest();
     
 //    TrieTest trie_test;
 //    

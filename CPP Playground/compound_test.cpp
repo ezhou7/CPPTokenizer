@@ -17,5 +17,5 @@ CompoundTest::~CompoundTest() {
 }
 
 void CompoundTest::test_compound_init() {
-    compound = unique_ptr<Compound>(new Compound());
+    compound = uptr_t<Compound>(new Compound());
 }

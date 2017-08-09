@@ -1,12 +1,12 @@
 //
-//  char_const.cpp
+//  charconst.cpp
 //  CPP Playground
 //
 //  Created by Ethan Zhou on 5/7/17.
 //  Copyright © 2017 NA. All rights reserved.
 //
 
-#include "char_const.hpp"
+#include "charconst.hpp"
 
 const char CharConst::SPACE = ' ';
 const char CharConst::TAB = '\t';

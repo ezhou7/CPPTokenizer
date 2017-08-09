@@ -29,9 +29,10 @@
 #include "apostrophe.hpp"
 #include "emoticon.hpp"
 #include "compound.hpp"
+#include "currency.hpp"
 
-#include "char_const.hpp"
-#include "string_const.hpp"
+#include "charconst.hpp"
+#include "strconst.hpp"
 
 #include "charutils.hpp"
 #include "strutils.hpp"
@@ -44,6 +45,7 @@ private:
     uptr_t<EnglishApostrophe> eng_apos;
     uptr_t<Emoticon> emoticon;
     uptr_t<Compound> compound;
+    uptr_t<Currency> currency;
     
     bool is_whitespace(const char& c);
     bool is_terminal(const char& c);
@@ -57,23 +59,31 @@ private:
     bool is_abbreviation(const string& s);
     bool is_ellipsis(const string& s, int pos);
     
-    bool is_emoticon(const string& s);
     int is_emoticon(const string& s, const int pos);
     
     bool is_compound(const string& s);
     
-    str_t substring(const string& s, int start, int end);
+    int is_currency(const string& s, int pos);
+    int is_dollar(const string& s, int pos);
+    
     void add_tokens(up_tvec_t& tokens, up_tvec_t& extension);
+    
+    up_tvec_t TokenizeByWhitespace(const string& text, int prev, int curr);
+    up_tvec_t TokenizePreviousWord(const string& text, int start, int end);
+    up_tvec_t TokenizeEmoticon(const string& text, int prev, int curr);
+    up_tvec_t TokenizeByTerminal(const string& text, int prev, int curr);
+    up_tvec_t TokenizeConjunctive(const string& text, int prev, int curr);
+    up_tvec_t TokenizeByApostrophe(const string& text, int prev, int curr);
+    up_tvec_t TokenizeParentheses(const string& text, int prev, int curr);
+    up_tvec_t TokenizeCurrency(const string& text, int prev, int curr);
+    up_tvec_t TokenizeCurrencyDollars(const string& text, int prev, int curr);
+    up_tvec_t TokenizeCurrencyAux(const string& text, int prev, int curr, bool isDollarCurrency);
     
 public:
     Tokenizer();
     ~Tokenizer();
     
     up_tvec_t tokenize(const string& text);
-    
-    uptr_t<vector<up_token_t>> compound_experimental(const string& s) __attribute__ ((deprecated));
-    vector<str_t>* split_whitespace(const string& sentence) __attribute__ ((deprecated));
-    vector<str_t>* segmentize(const string& text) __attribute__((deprecated));
 };
 
 #endif /* tokenizer_hpp */

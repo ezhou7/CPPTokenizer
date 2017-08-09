@@ -1,13 +1,13 @@
 //
-//  string_const.hpp
+//  strconst.hpp
 //  CPP Playground
 //
 //  Created by Ethan Zhou on 4/24/17.
 //  Copyright © 2017 NA. All rights reserved.
 //
 
-#ifndef string_const_hpp
-#define string_const_hpp
+#ifndef strconst_hpp
+#define strconst_hpp
 
 #include <stdio.h>
 
@@ -50,4 +50,4 @@ public:
     static const string GREATER_THAN;
 };
 
-#endif /* string_const_hpp */
+#endif /* strconst_hpp */
