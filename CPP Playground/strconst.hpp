@@ -34,6 +34,7 @@ public:
     
     // hyphenation
     static const string DASH;
+    static const string HYPHEN;
     static const string UNDERSCORE;
     
     // enclosure

@@ -37,3 +37,7 @@ bool CharUtils::is_encloser(const char& c) {
         c == CharConst::RIGHT_BRACKET ||
         c == CharConst::RIGHT_BRACE;
 }
+
+bool CharUtils::isHyphen(const char& c) {
+    return c == CharConst::HYPHEN;
+}

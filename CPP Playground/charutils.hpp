@@ -21,6 +21,7 @@ public:
     static bool is_apostrophe(const char& c);
     static bool is_opener(const char& c);
     static bool is_encloser(const char& c);
+    static bool isHyphen(const char& c);
 };
 
 #endif /* charutils_hpp */

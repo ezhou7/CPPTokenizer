@@ -21,6 +21,7 @@ const string StringConst::COLON = ":";
 const string StringConst::SEMICOLON = ";";
 
 const string StringConst::DASH = "-";
+const string StringConst::HYPHEN = "-";
 const string StringConst::UNDERSCORE = "_";
 
 const string StringConst::LEFT_PARENS = "(";

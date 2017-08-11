@@ -10,7 +10,7 @@
 
 hset_t<string>* create_strset(ifstream& in_stream) {
     if (!in_stream.is_open()) {
-        cout << "File is invalid or has been closed already.\n";
+        cout << "create_strset(): File is invalid or has been closed already.\n";
         return nullptr;
     }
     

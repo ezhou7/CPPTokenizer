@@ -30,6 +30,7 @@ public:
     
     // hyphenation
     static const char DASH;
+    static const char HYPHEN;
     static const char UNDERSCORE;
     
     // concatenation

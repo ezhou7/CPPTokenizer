@@ -60,10 +60,12 @@ vector<str_t>* Compound::get_words(const string& s) {
     return m_compound.get()[0][s].get();
 }
 
-up_tvec_t Compound::tokenize(const string& s, int spos, int epos) {
+up_tvec_t Compound::tokenize(const string& text, int spos, int epos) {
     auto tokens = up_tvec_t(new vector<up_token_t>());
     
-    string lowered = boost::to_lower_copy(s);
+    string subtext = text.substr(spos, epos - spos);
+    string lowered = boost::to_lower_copy(subtext);
+    
     if (is_compound(lowered)) {
         auto split_words = get_words(lowered);
         
@@ -71,13 +73,14 @@ up_tvec_t Compound::tokenize(const string& s, int spos, int epos) {
         for (int i = 0; i < split_words->size(); i++) {
             auto word = *(*split_words)[i];
             int end = start + (int) word.size();
+            
             token_t token = new Token(word, start, end);
             
             tokens->push_back(up_token_t(token));
             start = end;
         }
     } else {
-        tokens->push_back(up_token_t(new Token(s, spos, epos)));
+        tokens->push_back(up_token_t(new Token(subtext, spos, epos)));
     }
     
     return tokens;

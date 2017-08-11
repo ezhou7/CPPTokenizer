@@ -21,6 +21,7 @@ const char CharConst::COLON = ':';
 const char CharConst::SEMICOLON = ';';
 
 const char CharConst::DASH = '-';
+const char CharConst::HYPHEN = '-';
 const char CharConst::UNDERSCORE = '_';
 
 const char CharConst::APOSTROPHE = '\'';

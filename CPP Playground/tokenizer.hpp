@@ -30,6 +30,7 @@
 #include "emoticon.hpp"
 #include "compound.hpp"
 #include "currency.hpp"
+#include "hyphen.hpp"
 
 #include "charconst.hpp"
 #include "strconst.hpp"
@@ -46,6 +47,7 @@ private:
     uptr_t<Emoticon> emoticon;
     uptr_t<Compound> compound;
     uptr_t<Currency> currency;
+    uptr_t<EnglishHyphen> englishHyphen;
     
     bool is_whitespace(const char& c);
     bool is_terminal(const char& c);
@@ -69,7 +71,6 @@ private:
     void add_tokens(up_tvec_t& tokens, up_tvec_t& extension);
     
     up_tvec_t TokenizeByWhitespace(const string& text, int prev, int curr);
-    up_tvec_t TokenizePreviousWord(const string& text, int start, int end);
     up_tvec_t TokenizeEmoticon(const string& text, int prev, int curr);
     up_tvec_t TokenizeByTerminal(const string& text, int prev, int curr);
     up_tvec_t TokenizeConjunctive(const string& text, int prev, int curr);
@@ -78,6 +79,8 @@ private:
     up_tvec_t TokenizeCurrency(const string& text, int prev, int curr);
     up_tvec_t TokenizeCurrencyDollars(const string& text, int prev, int curr);
     up_tvec_t TokenizeCurrencyAux(const string& text, int prev, int curr, bool isDollarCurrency);
+    up_tvec_t TokenizeHyphen(const string& text, int prev, int curr);
+    up_tvec_t TokenizePreviousWord(const string& text, int start, int end);
     
 public:
     Tokenizer();

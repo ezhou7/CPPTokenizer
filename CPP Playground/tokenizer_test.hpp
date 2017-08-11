@@ -46,6 +46,7 @@ public:
     void TerminalTest();
     void ApostropheTest();
     void ParenthesesTest();
+    void HyphenTest();
 };
 
 #endif /* tokenizer_test_hpp */

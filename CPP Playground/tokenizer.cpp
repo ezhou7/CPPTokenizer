@@ -14,6 +14,7 @@ Tokenizer::Tokenizer() {
     emoticon = uptr_t<Emoticon>(new Emoticon);
     compound = uptr_t<Compound>(new Compound);
     currency = uptr_t<Currency>(new Currency);
+    englishHyphen = uptr_t<EnglishHyphen>(new EnglishHyphen);
 }
 
 Tokenizer::~Tokenizer() {
@@ -54,7 +55,7 @@ up_tvec_t Tokenizer::TokenizeByTerminal(const string& text, int prev, int curr) 
     
     // consider multiple terminals as one token
     int start = end;
-    for (end = end + 1; end < text.size(); end++) {
+    for (; end < text.size(); end++) {
         if (!CharUtils::is_terminal(text[end])) {
             break;
         }
@@ -90,9 +91,13 @@ up_tvec_t Tokenizer::TokenizeByApostrophe(const string& text, int prev, int curr
         } else {
             suffix = new Token(text.substr(curr, suf_len + 1), curr, curr + suf_len + 1);
         }
+    } else {
+        // if not an apostrophe suffix, trigger base case statement in Tokenizer::TokenizePreviousWord
+        end = prev;
     }
     
     auto tokens = TokenizePreviousWord(text, prev, end);
+    
     if (suf_len && suffix != nullptr) {
         tokens->push_back(up_token_t(suffix));
     }
@@ -126,15 +131,54 @@ up_tvec_t Tokenizer::TokenizeCurrencyAux(const string& text, int prev, int curr,
     return tokens;
 }
 
+up_tvec_t Tokenizer::TokenizeHyphen(const string& text, int start, int end) {
+    auto tokens = up_tvec_t(new vector<up_token_t>());
+    
+    int hyphenPos = -1;
+    int i = 0;
+    for (i = start; i < end; i++) {
+        if (CharUtils::isHyphen(text[i])) {
+            hyphenPos = i;
+            break;
+        }
+    }
+    
+    if (hyphenPos != -1) {
+        auto prefix = text.substr(start, hyphenPos - start);
+        auto suffix = text.substr(hyphenPos + 1, end - hyphenPos - 1);
+        
+        // prefix
+        if (englishHyphen->isPrefix(prefix)) {
+            tokens->push_back(up_token_t(new Token(prefix, start, hyphenPos)));
+        } else {
+            auto prefixCompounds = compound->tokenize(text, start, hyphenPos);
+            add_tokens(tokens, prefixCompounds);
+        }
+        
+        // hyphen
+        tokens->push_back(up_token_t(new Token(StringConst::HYPHEN, hyphenPos, hyphenPos + 1)));
+        
+        // suffix
+        if (englishHyphen->isSuffix(suffix)) {
+            tokens->push_back(up_token_t(new Token(suffix, hyphenPos + 1, end)));
+        } else {
+            auto suffixCompounds = compound->tokenize(text, hyphenPos + 1, end);
+            add_tokens(tokens, suffixCompounds);
+        }
+    } else {
+        auto compounds = compound->tokenize(text, start, end);
+        add_tokens(tokens, compounds);
+    }
+    
+    return tokens;
+}
+
 up_tvec_t Tokenizer::TokenizePreviousWord(const string& text, int start, int end) {
     if (start >= end) {
         return up_tvec_t(new vector<up_token_t>());
     }
     
-    auto prev_word = text.substr(start, end - start);
-    auto c_tokens = compound->tokenize(prev_word, start, end);
-    
-    return c_tokens;
+    return TokenizeHyphen(text, start, end);
 }
 
 up_tvec_t Tokenizer::tokenize(const string& text) {
@@ -157,7 +201,6 @@ up_tvec_t Tokenizer::tokenize(const string& text) {
                 }
             }
             
-            i = prev - 1;
             continue;
         } else if (int k = emoticon->is_emoticon(text, i)) {
             prev_tokens = TokenizeEmoticon(text, prev, i);
@@ -167,6 +210,9 @@ up_tvec_t Tokenizer::tokenize(const string& text) {
             i = prev_tokens->back()->getEnd() - 1;
         } else if (CharUtils::is_apostrophe(c)) {
             prev_tokens = TokenizeByApostrophe(text, prev, i);
+            if (prev_tokens->size() == 0) {
+                continue;
+            }
         } else if (CharUtils::is_opener(c) || CharUtils::is_encloser(c)) {
             prev_tokens = TokenizeParentheses(text, prev, i);
         } else if (CharUtils::is_conjunctive(c)) {

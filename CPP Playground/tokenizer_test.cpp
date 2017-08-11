@@ -53,7 +53,7 @@ void TokenizerTest::test(const string& test_type, const string& test_str) {
     for (int i = 0; i < tokens->size(); i++) {
         auto str_token = tokens.get()[0][i]->getWord();
         
-        cout << *str_token << "\n";
+        cout << *str_token << ", " << tokens.get()[0][i]->getStart() << ", " << tokens.get()[0][i]->getEnd() << "\n";
     }
     
     cout << "Ending " << test_type << " tokenizer test.\n\n";
@@ -91,12 +91,18 @@ void TokenizerTest::TerminalTest() {
 
 void TokenizerTest::ApostropheTest() {
     string test_type = "apostrophe";
-    string test_str = "This is a test of tokenizing apostrophes: \"You're a great person. I'm so happy to have you on the team.  But you shouldn't tell them about it yet.\"";
+    string test_str = "This is a test of tokenizing apostrophes: \"You're a great person. I'm so happy to have you on the team.  But you shouldn't tell them about it yet.\" said Ms. O'Donnell. asdf st. asdf";
     test(test_type, test_str);
 }
 
 void TokenizerTest::ParenthesesTest() {
     string test_type = "parentheses";
     string test_str = "This is a test of tokenizing parentheses (pair of parentheses)(((((set of parentheses))))).";
+    test(test_type, test_str);
+}
+
+void TokenizerTest::HyphenTest() {
+    string test_type = "hyphen";
+    string test_str = "This is a test of tokenizing hyphens: familiar-able, favorable.";
     test(test_type, test_str);
 }
